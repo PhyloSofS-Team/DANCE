@@ -1,0 +1,759 @@
+data_1AO4
+# 
+_entry.id   1AO4 
+# 
+_audit_conform.dict_name       mmcif_pdbx.dic 
+_audit_conform.dict_version    5.329 
+_audit_conform.dict_location   http://mmcif.pdb.org/dictionaries/ascii/mmcif_pdbx.dic 
+# 
+loop_
+_database_2.database_id 
+_database_2.database_code 
+PDB   1AO4         
+RCSB  RCSB001215   
+WWPDB D_1000001215 
+# 
+_pdbx_database_status.status_code                     REL 
+_pdbx_database_status.entry_id                        1AO4 
+_pdbx_database_status.recvd_initial_deposition_date   1997-07-16 
+_pdbx_database_status.deposit_site                    BNL 
+_pdbx_database_status.process_site                    RCSB 
+_pdbx_database_status.status_code_mr                  REL 
+_pdbx_database_status.SG_entry                        . 
+_pdbx_database_status.pdb_format_compatible           Y 
+_pdbx_database_status.status_code_sf                  ? 
+_pdbx_database_status.status_code_cs                  ? 
+_pdbx_database_status.status_code_nmr_data            ? 
+_pdbx_database_status.methods_development_category    ? 
+# 
+loop_
+_audit_author.name 
+_audit_author.pdbx_ordinal 
+'Caceres-Cortes, J.' 1 
+'Sugiyama, H.'       2 
+'Ikudome, K.'        3 
+'Saito, I.'          4 
+'Wang, A.H.-J.'      5 
+# 
+_citation.id                        primary 
+_citation.title                     
+'Structures of cobalt(III)-pepleomycin and cobalt(III)-deglycopepleomycin (green forms) determined by NMR studies.' 
+_citation.journal_abbrev            Eur.J.Biochem. 
+_citation.journal_volume            244 
+_citation.page_first                818 
+_citation.page_last                 828 
+_citation.year                      1997 
+_citation.journal_id_ASTM           EJBCAI 
+_citation.country                   IX 
+_citation.journal_id_ISSN           0014-2956 
+_citation.journal_id_CSD            0262 
+_citation.book_publisher            ? 
+_citation.pdbx_database_id_PubMed   9108252 
+_citation.pdbx_database_id_DOI      10.1111/j.1432-1033.1997.00818.x 
+# 
+loop_
+_citation_author.citation_id 
+_citation_author.name 
+_citation_author.ordinal 
+_citation_author.identifier_ORCID 
+primary 'Caceres-Cortes, J.' 1 ? 
+primary 'Sugiyama, H.'       2 ? 
+primary 'Ikudome, K.'        3 ? 
+primary 'Saito, I.'          4 ? 
+primary 'Wang, A.H.'         5 ? 
+# 
+_cell.entry_id           1AO4 
+_cell.length_a           1.000 
+_cell.length_b           1.000 
+_cell.length_c           1.000 
+_cell.angle_alpha        90.00 
+_cell.angle_beta         90.00 
+_cell.angle_gamma        90.00 
+_cell.Z_PDB              1 
+_cell.pdbx_unique_axis   ? 
+# 
+_symmetry.entry_id                         1AO4 
+_symmetry.space_group_name_H-M             'P 1' 
+_symmetry.pdbx_full_space_group_name_H-M   ? 
+_symmetry.cell_setting                     ? 
+_symmetry.Int_Tables_number                1 
+# 
+loop_
+_entity.id 
+_entity.type 
+_entity.src_method 
+_entity.pdbx_description 
+_entity.formula_weight 
+_entity.pdbx_number_of_molecules 
+_entity.pdbx_ec 
+_entity.pdbx_mutation 
+_entity.pdbx_fragment 
+_entity.details 
+1 branched    man '3-O-carbamoyl-alpha-D-mannopyranose-(1-2)-alpha-L-gulopyranose' 385.322  1 ? ? ? ? 
+2 non-polymer syn 'AGLYCON OF PEPLOMYCIN'                                          1106.283 1 ? ? ? ? 
+3 non-polymer syn 'COBALT (III) ION'                                               58.933   1 ? ? ? ? 
+4 non-polymer syn 'HYDROGEN PEROXIDE'                                              34.015   1 ? ? ? ? 
+# 
+loop_
+_chem_comp.id 
+_chem_comp.type 
+_chem_comp.mon_nstd_flag 
+_chem_comp.name 
+_chem_comp.pdbx_synonyms 
+_chem_comp.formula 
+_chem_comp.formula_weight 
+3CO non-polymer                   . 'COBALT (III) ION'                  ? 'Co 3'               58.933   
+3FM 'D-saccharide, alpha linking' n 3-O-carbamoyl-alpha-D-mannopyranose ? 'C7 H13 N O7'        223.181  
+GUP 'L-saccharide, alpha linking' . alpha-L-gulopyranose                ? 'C6 H12 O6'          180.156  
+PEO non-polymer                   . 'HYDROGEN PEROXIDE'                 ? 'H2 O2'              34.015   
+PMY non-polymer                   . 'AGLYCON OF PEPLOMYCIN'             
+'AGLYCON OF (S)-N1-[3-[(1-PHENYLETHYL)AMINO]-PROPYL]BLEOMYCINAMIDE' 'C48 H67 N17 O10 S2' 1106.283 
+# 
+loop_
+_pdbx_nmr_exptl.experiment_id 
+_pdbx_nmr_exptl.conditions_id 
+_pdbx_nmr_exptl.type 
+_pdbx_nmr_exptl.solution_id 
+1 1 '2D NOESY' 1 
+2 1 TOCSY      1 
+3 1 DQF-COSY   1 
+# 
+_pdbx_nmr_exptl_sample_conditions.conditions_id       1 
+_pdbx_nmr_exptl_sample_conditions.temperature         275 
+_pdbx_nmr_exptl_sample_conditions.pressure            1 
+_pdbx_nmr_exptl_sample_conditions.pressure_units      atm 
+_pdbx_nmr_exptl_sample_conditions.pH                  6.4 
+_pdbx_nmr_exptl_sample_conditions.ionic_strength      ? 
+_pdbx_nmr_exptl_sample_conditions.temperature_units   K 
+# 
+_pdbx_nmr_sample_details.solution_id      1 
+_pdbx_nmr_sample_details.contents         '50mM sodium phosphate, 0.15 M NaCl' 
+_pdbx_nmr_sample_details.solvent_system   H2O 
+# 
+_pdbx_nmr_spectrometer.spectrometer_id   1 
+_pdbx_nmr_spectrometer.type              ? 
+_pdbx_nmr_spectrometer.manufacturer      Varian 
+_pdbx_nmr_spectrometer.model             'VXR 500' 
+_pdbx_nmr_spectrometer.field_strength    500 
+# 
+_pdbx_nmr_refine.entry_id           1AO4 
+_pdbx_nmr_refine.method             ? 
+_pdbx_nmr_refine.details            'Refinement details can be found in the JRNL citation' 
+_pdbx_nmr_refine.software_ordinal   1 
+# 
+_pdbx_nmr_details.entry_id   1AO4 
+_pdbx_nmr_details.text       'method used to determine the structure : NOE-RMD' 
+# 
+_pdbx_nmr_ensemble.entry_id                                      1AO4 
+_pdbx_nmr_ensemble.conformers_calculated_total_number            1 
+_pdbx_nmr_ensemble.conformers_submitted_total_number             1 
+_pdbx_nmr_ensemble.conformer_selection_criteria                  'minimal energy' 
+_pdbx_nmr_ensemble.average_constraints_per_residue               ? 
+_pdbx_nmr_ensemble.average_constraint_violations_per_residue     ? 
+_pdbx_nmr_ensemble.maximum_distance_constraint_violation         ? 
+_pdbx_nmr_ensemble.average_distance_constraint_violation         ? 
+_pdbx_nmr_ensemble.maximum_upper_distance_constraint_violation   ? 
+_pdbx_nmr_ensemble.maximum_lower_distance_constraint_violation   ? 
+_pdbx_nmr_ensemble.distance_constraint_violation_method          ? 
+_pdbx_nmr_ensemble.maximum_torsion_angle_constraint_violation    ? 
+_pdbx_nmr_ensemble.average_torsion_angle_constraint_violation    ? 
+_pdbx_nmr_ensemble.torsion_angle_constraint_violation_method     ? 
+# 
+_pdbx_nmr_representative.entry_id             1AO4 
+_pdbx_nmr_representative.conformer_id         1 
+_pdbx_nmr_representative.selection_criteria   'minimized average' 
+# 
+loop_
+_pdbx_nmr_software.name 
+_pdbx_nmr_software.version 
+_pdbx_nmr_software.classification 
+_pdbx_nmr_software.authors 
+_pdbx_nmr_software.ordinal 
+X-PLOR  3.1 refinement A.T.Brunger 1 
+SPEDREF ?   refinement ?           2 
+# 
+_exptl.entry_id          1AO4 
+_exptl.method            'SOLUTION NMR' 
+_exptl.crystals_number   ? 
+# 
+_struct.entry_id                  1AO4 
+_struct.title                     'COBALT(III)-PEPLOMYCIN COMPLEX DETERMINED BY NMR STUDIES' 
+_struct.pdbx_descriptor           'PEPLOMYCIN/Co(III) Complex' 
+_struct.pdbx_model_details        ? 
+_struct.pdbx_CASP_flag            ? 
+_struct.pdbx_model_type_details   ? 
+# 
+_struct_keywords.entry_id        1AO4 
+_struct_keywords.pdbx_keywords   INHIBITOR 
+_struct_keywords.text            
+'ANTICANCER DRUGS, PEPLOMYCIN, PEPLEOMYCIN, BLEOMYCIN, DNA, TWO-DIMENSIONAL NMR, SOLUTION STRUCTURES, INHIBITOR' 
+# 
+loop_
+_struct_asym.id 
+_struct_asym.pdbx_blank_PDB_chainid_flag 
+_struct_asym.pdbx_modified 
+_struct_asym.entity_id 
+_struct_asym.details 
+A N N 1 ? 
+B N N 2 ? 
+C N N 3 ? 
+D N N 4 ? 
+# 
+_struct_biol.id   1 
+# 
+loop_
+_struct_conn.id 
+_struct_conn.conn_type_id 
+_struct_conn.pdbx_leaving_atom_flag 
+_struct_conn.pdbx_PDB_id 
+_struct_conn.ptnr1_label_asym_id 
+_struct_conn.ptnr1_label_comp_id 
+_struct_conn.ptnr1_label_seq_id 
+_struct_conn.ptnr1_label_atom_id 
+_struct_conn.pdbx_ptnr1_label_alt_id 
+_struct_conn.pdbx_ptnr1_PDB_ins_code 
+_struct_conn.pdbx_ptnr1_standard_comp_id 
+_struct_conn.ptnr1_symmetry 
+_struct_conn.ptnr2_label_asym_id 
+_struct_conn.ptnr2_label_comp_id 
+_struct_conn.ptnr2_label_seq_id 
+_struct_conn.ptnr2_label_atom_id 
+_struct_conn.pdbx_ptnr2_label_alt_id 
+_struct_conn.pdbx_ptnr2_PDB_ins_code 
+_struct_conn.ptnr1_auth_asym_id 
+_struct_conn.ptnr1_auth_comp_id 
+_struct_conn.ptnr1_auth_seq_id 
+_struct_conn.ptnr2_auth_asym_id 
+_struct_conn.ptnr2_auth_comp_id 
+_struct_conn.ptnr2_auth_seq_id 
+_struct_conn.ptnr2_symmetry 
+_struct_conn.pdbx_ptnr3_label_atom_id 
+_struct_conn.pdbx_ptnr3_label_seq_id 
+_struct_conn.pdbx_ptnr3_label_comp_id 
+_struct_conn.pdbx_ptnr3_label_asym_id 
+_struct_conn.pdbx_ptnr3_label_alt_id 
+_struct_conn.pdbx_ptnr3_PDB_ins_code 
+_struct_conn.details 
+_struct_conn.pdbx_dist_value 
+_struct_conn.pdbx_value_order 
+_struct_conn.pdbx_role 
+covale1 covale both ? A GUP . O2  ? ? ? 1_555 A 3FM . C1  ? ? A GUP 1 A 3FM 2 1_555 ? ? ? ? ? ? ? 1.387 sing ? 
+covale2 covale one  ? A GUP . C1  ? ? ? 1_555 B PMY . OH1 ? ? A GUP 1 A PMY 3 1_555 ? ? ? ? ? ? ? 1.432 ?    ? 
+metalc1 metalc ?    ? A 3FM . NCA ? ? ? 1_555 C 3CO . CO  ? ? A 3FM 2 A 3CO 4 1_555 ? ? ? ? ? ? ? 1.998 ?    ? 
+metalc2 metalc ?    ? B PMY . NJ  ? ? ? 1_555 C 3CO . CO  ? ? A PMY 3 A 3CO 4 1_555 ? ? ? ? ? ? ? 1.965 ?    ? 
+metalc3 metalc ?    ? B PMY . NH  ? ? ? 1_555 C 3CO . CO  ? ? A PMY 3 A 3CO 4 1_555 ? ? ? ? ? ? ? 2.000 ?    ? 
+metalc4 metalc ?    ? B PMY . NG  ? ? ? 1_555 C 3CO . CO  ? ? A PMY 3 A 3CO 4 1_555 ? ? ? ? ? ? ? 1.870 ?    ? 
+metalc5 metalc ?    ? B PMY . NC  ? ? ? 1_555 C 3CO . CO  ? ? A PMY 3 A 3CO 4 1_555 ? ? ? ? ? ? ? 2.042 ?    ? 
+metalc6 metalc ?    ? C 3CO . CO  ? ? ? 1_555 D PEO . O1  ? ? A 3CO 4 A PEO 5 1_555 ? ? ? ? ? ? ? 1.992 ?    ? 
+# 
+loop_
+_struct_conn_type.id 
+_struct_conn_type.criteria 
+_struct_conn_type.reference 
+covale ? ? 
+metalc ? ? 
+# 
+_database_PDB_matrix.entry_id          1AO4 
+_database_PDB_matrix.origx[1][1]       1.000000 
+_database_PDB_matrix.origx[1][2]       0.000000 
+_database_PDB_matrix.origx[1][3]       0.000000 
+_database_PDB_matrix.origx[2][1]       0.000000 
+_database_PDB_matrix.origx[2][2]       1.000000 
+_database_PDB_matrix.origx[2][3]       0.000000 
+_database_PDB_matrix.origx[3][1]       0.000000 
+_database_PDB_matrix.origx[3][2]       0.000000 
+_database_PDB_matrix.origx[3][3]       1.000000 
+_database_PDB_matrix.origx_vector[1]   0.00000 
+_database_PDB_matrix.origx_vector[2]   0.00000 
+_database_PDB_matrix.origx_vector[3]   0.00000 
+# 
+_atom_sites.entry_id                    1AO4 
+_atom_sites.fract_transf_matrix[1][1]   1.000000 
+_atom_sites.fract_transf_matrix[1][2]   0.000000 
+_atom_sites.fract_transf_matrix[1][3]   0.000000 
+_atom_sites.fract_transf_matrix[2][1]   0.000000 
+_atom_sites.fract_transf_matrix[2][2]   1.000000 
+_atom_sites.fract_transf_matrix[2][3]   0.000000 
+_atom_sites.fract_transf_matrix[3][1]   0.000000 
+_atom_sites.fract_transf_matrix[3][2]   0.000000 
+_atom_sites.fract_transf_matrix[3][3]   1.000000 
+_atom_sites.fract_transf_vector[1]      0.00000 
+_atom_sites.fract_transf_vector[2]      0.00000 
+_atom_sites.fract_transf_vector[3]      0.00000 
+# 
+loop_
+_atom_type.symbol 
+C  
+CO 
+H  
+N  
+O  
+S  
+# 
+loop_
+_atom_site.group_PDB 
+_atom_site.id 
+_atom_site.type_symbol 
+_atom_site.label_atom_id 
+_atom_site.label_alt_id 
+_atom_site.label_comp_id 
+_atom_site.label_asym_id 
+_atom_site.label_entity_id 
+_atom_site.label_seq_id 
+_atom_site.pdbx_PDB_ins_code 
+_atom_site.Cartn_x 
+_atom_site.Cartn_y 
+_atom_site.Cartn_z 
+_atom_site.occupancy 
+_atom_site.B_iso_or_equiv 
+_atom_site.pdbx_formal_charge 
+_atom_site.auth_seq_id 
+_atom_site.auth_comp_id 
+_atom_site.auth_asym_id 
+_atom_site.auth_atom_id 
+_atom_site.pdbx_PDB_model_num 
+HETATM 1   O  O5   . GUP A 1 . ? 19.424 -11.677 22.256 1.00 0.00 ? 1 GUP A O5   1 
+HETATM 2   C  C1   . GUP A 1 . ? 18.191 -11.207 22.748 1.00 0.00 ? 1 GUP A C1   1 
+HETATM 3   C  C2   . GUP A 1 . ? 18.336 -10.766 24.197 1.00 0.00 ? 1 GUP A C2   1 
+HETATM 4   O  O2   . GUP A 1 . ? 16.998 -10.642 24.561 1.00 0.00 ? 1 GUP A O2   1 
+HETATM 5   C  C3   . GUP A 1 . ? 18.897 -11.920 25.046 1.00 0.00 ? 1 GUP A C3   1 
+HETATM 6   O  O3   . GUP A 1 . ? 17.882 -12.931 24.975 1.00 0.00 ? 1 GUP A O3   1 
+HETATM 7   C  C4   . GUP A 1 . ? 20.219 -12.429 24.434 1.00 0.00 ? 1 GUP A C4   1 
+HETATM 8   O  O4   . GUP A 1 . ? 21.174 -11.376 24.501 1.00 0.00 ? 1 GUP A O4   1 
+HETATM 9   C  C5   . GUP A 1 . ? 19.950 -12.791 22.953 1.00 0.00 ? 1 GUP A C5   1 
+HETATM 10  C  C6   . GUP A 1 . ? 21.179 -13.193 22.164 1.00 0.00 ? 1 GUP A C6   1 
+HETATM 11  O  O6   . GUP A 1 . ? 20.780 -13.458 20.822 1.00 0.00 ? 1 GUP A O6   1 
+HETATM 12  H  H1   . GUP A 1 . ? 17.956 -10.330 22.168 1.00 0.00 ? 1 GUP A H1   1 
+HETATM 13  H  H2   . GUP A 1 . ? 18.901 -9.830  24.167 1.00 0.00 ? 1 GUP A H2   1 
+HETATM 14  H  H3   . GUP A 1 . ? 18.974 -11.527 26.075 1.00 0.00 ? 1 GUP A H3   1 
+HETATM 15  H  HO3  . GUP A 1 . ? 17.527 -12.838 24.084 1.00 0.00 ? 1 GUP A HO3  1 
+HETATM 16  H  H4   . GUP A 1 . ? 20.607 -13.308 24.973 1.00 0.00 ? 1 GUP A H4   1 
+HETATM 17  H  HO4  . GUP A 1 . ? 21.460 -11.270 25.413 1.00 0.00 ? 1 GUP A HO4  1 
+HETATM 18  H  H5   . GUP A 1 . ? 19.213 -13.596 22.878 1.00 0.00 ? 1 GUP A H5   1 
+HETATM 19  H  H61  . GUP A 1 . ? 21.627 -14.083 22.589 1.00 0.00 ? 1 GUP A H61  1 
+HETATM 20  H  H62  . GUP A 1 . ? 21.857 -12.339 22.181 1.00 0.00 ? 1 GUP A H62  1 
+HETATM 21  H  HO6  . GUP A 1 . ? 20.390 -12.648 20.481 1.00 0.00 ? 1 GUP A HO6  1 
+HETATM 22  O  O5   . 3FM A 1 . ? 16.724 -8.548  25.493 1.00 0.00 ? 2 3FM A O5   1 
+HETATM 23  C  C1   . 3FM A 1 . ? 16.556 -9.936  25.670 1.00 0.00 ? 2 3FM A C1   1 
+HETATM 24  C  C2   . 3FM A 1 . ? 15.074 -10.348 25.773 1.00 0.00 ? 2 3FM A C2   1 
+HETATM 25  O  O2   . 3FM A 1 . ? 14.354 -9.734  26.822 1.00 0.00 ? 2 3FM A O2   1 
+HETATM 26  C  C3   . 3FM A 1 . ? 14.458 -9.861  24.434 1.00 0.00 ? 2 3FM A C3   1 
+HETATM 27  O  O3   . 3FM A 1 . ? 13.441 -10.416 24.035 1.00 0.00 ? 2 3FM A O3   1 
+HETATM 28  C  CA   . 3FM A 1 . ? 13.438 -11.674 24.047 1.00 0.00 ? 2 3FM A CA   1 
+HETATM 29  O  OCA  . 3FM A 1 . ? 12.456 -12.161 24.559 1.00 0.00 ? 2 3FM A OCA  1 
+HETATM 30  N  NCA  . 3FM A 1 . ? 14.488 -12.422 23.569 1.00 0.00 ? 2 3FM A NCA  1 
+HETATM 31  C  C4   . 3FM A 1 . ? 14.599 -8.356  24.266 1.00 0.00 ? 2 3FM A C4   1 
+HETATM 32  O  O4   . 3FM A 1 . ? 14.072 -8.004  22.989 1.00 0.00 ? 2 3FM A O4   1 
+HETATM 33  C  C5   . 3FM A 1 . ? 16.109 -8.030  24.326 1.00 0.00 ? 2 3FM A C5   1 
+HETATM 34  C  C6   . 3FM A 1 . ? 16.429 -6.564  24.293 1.00 0.00 ? 2 3FM A C6   1 
+HETATM 35  O  O6   . 3FM A 1 . ? 15.705 -5.995  23.205 1.00 0.00 ? 2 3FM A O6   1 
+HETATM 36  H  H1   . 3FM A 1 . ? 17.196 -10.235 26.471 1.00 0.00 ? 2 3FM A H1   1 
+HETATM 37  H  H2   . 3FM A 1 . ? 14.945 -11.443 25.920 1.00 0.00 ? 2 3FM A H2   1 
+HETATM 38  H  HO2  . 3FM A 1 . ? 14.722 -10.016 27.660 1.00 0.00 ? 2 3FM A HO2  1 
+HETATM 39  H  H3   . 3FM A 1 . ? 15.050 -10.201 23.607 1.00 0.00 ? 2 3FM A H3   1 
+HETATM 40  H  HNC1 . 3FM A 1 . ? 14.958 -13.168 24.029 1.00 0.00 ? 2 3FM A HNC1 1 
+HETATM 41  H  HNC2 . 3FM A 1 . ? 15.287 -11.970 23.159 1.00 0.00 ? 2 3FM A HNC2 1 
+HETATM 42  H  H4   . 3FM A 1 . ? 14.076 -7.868  25.092 1.00 0.00 ? 2 3FM A H4   1 
+HETATM 43  H  HO4  . 3FM A 1 . ? 14.156 -8.742  22.372 1.00 0.00 ? 2 3FM A HO4  1 
+HETATM 44  H  H5   . 3FM A 1 . ? 16.616 -8.416  23.428 1.00 0.00 ? 2 3FM A H5   1 
+HETATM 45  H  H61  . 3FM A 1 . ? 17.511 -6.601  24.143 1.00 0.00 ? 2 3FM A H61  1 
+HETATM 46  H  H62  . 3FM A 1 . ? 16.166 -6.114  25.251 1.00 0.00 ? 2 3FM A H62  1 
+HETATM 47  H  HO6  . 3FM A 1 . ? 14.998 -6.635  23.001 1.00 0.00 ? 2 3FM A HO6  1 
+HETATM 48  N  NA   . PMY B 2 . ? 11.020 -13.029 27.379 1.00 0.00 ? 3 PMY A NA   1 
+HETATM 49  C  C1   . PMY B 2 . ? 11.017 -13.640 26.189 1.00 0.00 ? 3 PMY A C1   1 
+HETATM 50  O  O1   . PMY B 2 . ? 10.149 -13.356 25.371 1.00 0.00 ? 3 PMY A O1   1 
+HETATM 51  C  C2   . PMY B 2 . ? 12.057 -14.745 25.920 1.00 0.00 ? 3 PMY A C2   1 
+HETATM 52  N  NB   . PMY B 2 . ? 11.553 -16.043 26.428 1.00 0.00 ? 3 PMY A NB   1 
+HETATM 53  C  C3   . PMY B 2 . ? 13.005 -14.728 24.683 1.00 0.00 ? 3 PMY A C3   1 
+HETATM 54  N  NC   . PMY B 2 . ? 12.684 -14.775 23.195 1.00 0.00 ? 3 PMY A NC   1 
+HETATM 55  N  ND   . PMY B 2 . ? 8.208  -14.805 22.767 1.00 0.00 ? 3 PMY A ND   1 
+HETATM 56  C  C4   . PMY B 2 . ? 9.064  -15.821 22.681 1.00 0.00 ? 3 PMY A C4   1 
+HETATM 57  O  O4   . PMY B 2 . ? 8.862  -16.860 22.066 1.00 0.00 ? 3 PMY A O4   1 
+HETATM 58  C  C5   . PMY B 2 . ? 10.388 -15.631 23.381 1.00 0.00 ? 3 PMY A C5   1 
+HETATM 59  C  C6   . PMY B 2 . ? 11.307 -14.670 22.654 1.00 0.00 ? 3 PMY A C6   1 
+HETATM 60  C  C7   . PMY B 2 . ? 11.007 -13.202 22.345 1.00 0.00 ? 3 PMY A C7   1 
+HETATM 61  N  NE   . PMY B 2 . ? 9.861  -12.457 22.425 1.00 0.00 ? 3 PMY A NE   1 
+HETATM 62  C  C8   . PMY B 2 . ? 9.884  -11.115 22.045 1.00 0.00 ? 3 PMY A C8   1 
+HETATM 63  N  NG   . PMY B 2 . ? 12.095 -12.583 21.891 1.00 0.00 ? 3 PMY A NG   1 
+HETATM 64  C  C10  . PMY B 2 . ? 12.176 -11.327 21.482 1.00 0.00 ? 3 PMY A C10  1 
+HETATM 65  C  C9   . PMY B 2 . ? 11.057 -10.544 21.563 1.00 0.00 ? 3 PMY A C9   1 
+HETATM 66  N  NF   . PMY B 2 . ? 8.713  -10.444 22.154 1.00 0.00 ? 3 PMY A NF   1 
+HETATM 67  C  CA   . PMY B 2 . ? 11.178 -9.084  21.181 1.00 0.00 ? 3 PMY A CA   1 
+HETATM 68  C  C12  . PMY B 2 . ? 13.524 -10.980 20.940 1.00 0.00 ? 3 PMY A C12  1 
+HETATM 69  O  O12  . PMY B 2 . ? 13.720 -9.910  20.377 1.00 0.00 ? 3 PMY A O12  1 
+HETATM 70  N  NH   . PMY B 2 . ? 14.507 -11.907 21.046 1.00 0.00 ? 3 PMY A NH   1 
+HETATM 71  C  C13  . PMY B 2 . ? 15.903 -11.729 20.573 1.00 0.00 ? 3 PMY A C13  1 
+HETATM 72  C  C14  . PMY B 2 . ? 16.906 -12.608 21.318 1.00 0.00 ? 3 PMY A C14  1 
+HETATM 73  O  OH1  . PMY B 2 . ? 17.142 -12.173 22.620 1.00 0.00 ? 3 PMY A OH1  1 
+HETATM 74  C  C27  . PMY B 2 . ? 16.534 -14.047 21.440 1.00 0.00 ? 3 PMY A C27  1 
+HETATM 75  N  NJ   . PMY B 2 . ? 15.388 -14.527 21.941 1.00 0.00 ? 3 PMY A NJ   1 
+HETATM 76  C  C28  . PMY B 2 . ? 17.301 -15.082 21.067 1.00 0.00 ? 3 PMY A C28  1 
+HETATM 77  C  C29  . PMY B 2 . ? 15.470 -15.863 21.891 1.00 0.00 ? 3 PMY A C29  1 
+HETATM 78  N  NI   . PMY B 2 . ? 16.646 -16.210 21.351 1.00 0.00 ? 3 PMY A NI   1 
+HETATM 79  C  C30  . PMY B 2 . ? 16.152 -12.125 19.113 1.00 0.00 ? 3 PMY A C30  1 
+HETATM 80  O  O30  . PMY B 2 . ? 17.163 -11.721 18.550 1.00 0.00 ? 3 PMY A O30  1 
+HETATM 81  N  NK   . PMY B 2 . ? 15.351 -13.013 18.525 1.00 0.00 ? 3 PMY A NK   1 
+HETATM 82  C  C31  . PMY B 2 . ? 15.554 -13.581 17.201 1.00 0.00 ? 3 PMY A C31  1 
+HETATM 83  C  CB   . PMY B 2 . ? 15.210 -12.490 16.162 1.00 0.00 ? 3 PMY A CB   1 
+HETATM 84  C  C33  . PMY B 2 . ? 14.619 -14.791 17.052 1.00 0.00 ? 3 PMY A C33  1 
+HETATM 85  O  OH2  . PMY B 2 . ? 14.681 -15.392 15.753 1.00 0.00 ? 3 PMY A OH2  1 
+HETATM 86  C  C34  . PMY B 2 . ? 14.928 -15.887 18.100 1.00 0.00 ? 3 PMY A C34  1 
+HETATM 87  C  CC   . PMY B 2 . ? 16.111 -16.789 17.611 1.00 0.00 ? 3 PMY A CC   1 
+HETATM 88  C  C36  . PMY B 2 . ? 13.704 -16.792 18.254 1.00 0.00 ? 3 PMY A C36  1 
+HETATM 89  O  O36  . PMY B 2 . ? 13.090 -17.137 17.250 1.00 0.00 ? 3 PMY A O36  1 
+HETATM 90  N  NL   . PMY B 2 . ? 13.375 -17.201 19.481 1.00 0.00 ? 3 PMY A NL   1 
+HETATM 91  C  C37  . PMY B 2 . ? 12.298 -18.111 19.853 1.00 0.00 ? 3 PMY A C37  1 
+HETATM 92  C  C38  . PMY B 2 . ? 12.448 -18.460 21.342 1.00 0.00 ? 3 PMY A C38  1 
+HETATM 93  O  OH3  . PMY B 2 . ? 12.698 -17.235 22.013 1.00 0.00 ? 3 PMY A OH3  1 
+HETATM 94  C  CD   . PMY B 2 . ? 13.596 -19.486 21.541 1.00 0.00 ? 3 PMY A CD   1 
+HETATM 95  C  C40  . PMY B 2 . ? 10.880 -17.604 19.595 1.00 0.00 ? 3 PMY A C40  1 
+HETATM 96  O  O40  . PMY B 2 . ? 10.005 -18.460 19.481 1.00 0.00 ? 3 PMY A O40  1 
+HETATM 97  N  NM   . PMY B 2 . ? 10.580 -16.298 19.533 1.00 0.00 ? 3 PMY A NM   1 
+HETATM 98  C  C41  . PMY B 2 . ? 9.210  -15.861 19.331 1.00 0.00 ? 3 PMY A C41  1 
+HETATM 99  C  C42  . PMY B 2 . ? 8.848  -15.900 17.855 1.00 0.00 ? 3 PMY A C42  1 
+HETATM 100 C  C43  . PMY B 2 . ? 9.578  -14.807 17.150 1.00 0.00 ? 3 PMY A C43  1 
+HETATM 101 S  S43  . PMY B 2 . ? 10.625 -14.719 16.032 1.00 0.00 ? 3 PMY A S43  1 
+HETATM 102 C  C44  . PMY B 2 . ? 10.930 -13.196 15.858 1.00 0.00 ? 3 PMY A C44  1 
+HETATM 103 N  NN   . PMY B 2 . ? 9.388  -13.532 17.481 1.00 0.00 ? 3 PMY A NN   1 
+HETATM 104 C  C45  . PMY B 2 . ? 10.117 -12.647 16.791 1.00 0.00 ? 3 PMY A C45  1 
+HETATM 105 C  C46  . PMY B 2 . ? 10.008 -11.336 17.078 1.00 0.00 ? 3 PMY A C46  1 
+HETATM 106 S  S46  . PMY B 2 . ? 9.146  -10.636 18.152 1.00 0.00 ? 3 PMY A S46  1 
+HETATM 107 C  C47  . PMY B 2 . ? 9.469  -9.084  17.971 1.00 0.00 ? 3 PMY A C47  1 
+HETATM 108 N  NO   . PMY B 2 . ? 10.693 -10.336 16.502 1.00 0.00 ? 3 PMY A NO   1 
+HETATM 109 C  C48  . PMY B 2 . ? 10.412 -9.108  16.993 1.00 0.00 ? 3 PMY A C48  1 
+HETATM 110 C  C49  . PMY B 2 . ? 11.090 -8.031  16.523 1.00 0.00 ? 3 PMY A C49  1 
+HETATM 111 O  O49  . PMY B 2 . ? 11.844 -8.170  15.561 1.00 0.00 ? 3 PMY A O49  1 
+HETATM 112 N  NP   . PMY B 2 . ? 10.909 -6.814  17.072 1.00 0.00 ? 3 PMY A NP   1 
+HETATM 113 C  C51  . PMY B 2 . ? 11.586 -5.589  16.634 1.00 0.00 ? 3 PMY A C51  1 
+HETATM 114 C  C52  . PMY B 2 . ? 12.790 -5.267  17.544 1.00 0.00 ? 3 PMY A C52  1 
+HETATM 115 C  C53  . PMY B 2 . ? 14.011 -6.211  17.220 1.00 0.00 ? 3 PMY A C53  1 
+HETATM 116 N  NQ   . PMY B 2 . ? 14.580 -6.015  15.848 1.00 0.00 ? 3 PMY A NQ   1 
+HETATM 117 C  CE   . PMY B 2 . ? 17.082 -5.412  15.823 1.00 0.00 ? 3 PMY A CE   1 
+HETATM 118 C  C54  . PMY B 2 . ? 15.621 -5.019  15.425 1.00 0.00 ? 3 PMY A C54  1 
+HETATM 119 C  C56  . PMY B 2 . ? 15.563 -4.844  13.891 1.00 0.00 ? 3 PMY A C56  1 
+HETATM 120 C  C57  . PMY B 2 . ? 15.439 -5.961  13.088 1.00 0.00 ? 3 PMY A C57  1 
+HETATM 121 C  C58  . PMY B 2 . ? 15.384 -5.836  11.724 1.00 0.00 ? 3 PMY A C58  1 
+HETATM 122 C  C59  . PMY B 2 . ? 15.451 -4.604  11.147 1.00 0.00 ? 3 PMY A C59  1 
+HETATM 123 C  C60  . PMY B 2 . ? 15.570 -3.492  11.924 1.00 0.00 ? 3 PMY A C60  1 
+HETATM 124 C  C61  . PMY B 2 . ? 15.626 -3.600  13.288 1.00 0.00 ? 3 PMY A C61  1 
+HETATM 125 H  HA1  . PMY B 2 . ? 10.336 -12.307 27.555 1.00 0.00 ? 3 PMY A HA1  1 
+HETATM 126 H  HA2  . PMY B 2 . ? 11.679 -13.257 28.112 1.00 0.00 ? 3 PMY A HA2  1 
+HETATM 127 H  H2   . PMY B 2 . ? 12.853 -14.455 26.625 1.00 0.00 ? 3 PMY A H2   1 
+HETATM 128 H  HB1  . PMY B 2 . ? 10.966 -16.499 25.745 1.00 0.00 ? 3 PMY A HB1  1 
+HETATM 129 H  HB2  . PMY B 2 . ? 12.359 -16.613 26.658 1.00 0.00 ? 3 PMY A HB2  1 
+HETATM 130 H  H3E  . PMY B 2 . ? 13.462 -15.657 24.893 1.00 0.00 ? 3 PMY A H3E  1 
+HETATM 131 H  H3X  . PMY B 2 . ? 13.723 -13.982 24.937 1.00 0.00 ? 3 PMY A H3X  1 
+HETATM 132 H  HNC  . PMY B 2 . ? 12.901 -15.733 22.924 1.00 0.00 ? 3 PMY A HNC  1 
+HETATM 133 H  HD1  . PMY B 2 . ? 8.465  -14.003 23.329 1.00 0.00 ? 3 PMY A HD1  1 
+HETATM 134 H  HD2  . PMY B 2 . ? 7.326  -14.838 22.284 1.00 0.00 ? 3 PMY A HD2  1 
+HETATM 135 H  H5E  . PMY B 2 . ? 10.956 -16.565 23.422 1.00 0.00 ? 3 PMY A H5E  1 
+HETATM 136 H  H5X  . PMY B 2 . ? 10.199 -15.332 24.381 1.00 0.00 ? 3 PMY A H5X  1 
+HETATM 137 H  H6   . PMY B 2 . ? 11.342 -15.209 21.711 1.00 0.00 ? 3 PMY A H6   1 
+HETATM 138 H  HF1  . PMY B 2 . ? 8.631  -9.474  21.889 1.00 0.00 ? 3 PMY A HF1  1 
+HETATM 139 H  HF2  . PMY B 2 . ? 7.896  -10.917 22.515 1.00 0.00 ? 3 PMY A HF2  1 
+HETATM 140 H  HAA  . PMY B 2 . ? 11.413 -8.998  20.120 1.00 0.00 ? 3 PMY A HAA  1 
+HETATM 141 H  HAB  . PMY B 2 . ? 12.028 -8.679  21.736 1.00 0.00 ? 3 PMY A HAB  1 
+HETATM 142 H  HAC  . PMY B 2 . ? 10.309 -8.484  21.431 1.00 0.00 ? 3 PMY A HAC  1 
+HETATM 143 H  H13  . PMY B 2 . ? 16.319 -10.756 20.866 1.00 0.00 ? 3 PMY A H13  1 
+HETATM 144 H  H14  . PMY B 2 . ? 17.854 -12.514 20.790 1.00 0.00 ? 3 PMY A H14  1 
+HETATM 145 H  H28  . PMY B 2 . ? 18.272 -15.020 20.618 1.00 0.00 ? 3 PMY A H28  1 
+HETATM 146 H  H29  . PMY B 2 . ? 14.689 -16.523 22.203 1.00 0.00 ? 3 PMY A H29  1 
+HETATM 147 H  HNI  . PMY B 2 . ? 16.998 -17.142 21.178 1.00 0.00 ? 3 PMY A HNI  1 
+HETATM 148 H  HNK  . PMY B 2 . ? 14.555 -13.337 19.023 1.00 0.00 ? 3 PMY A HNK  1 
+HETATM 149 H  H31  . PMY B 2 . ? 16.586 -13.975 17.162 1.00 0.00 ? 3 PMY A H31  1 
+HETATM 150 H  HBA  . PMY B 2 . ? 15.261 -12.880 15.144 1.00 0.00 ? 3 PMY A HBA  1 
+HETATM 151 H  HBB  . PMY B 2 . ? 15.908 -11.650 16.216 1.00 0.00 ? 3 PMY A HBB  1 
+HETATM 152 H  HBC  . PMY B 2 . ? 14.207 -12.080 16.309 1.00 0.00 ? 3 PMY A HBC  1 
+HETATM 153 H  H33  . PMY B 2 . ? 13.598 -14.440 17.205 1.00 0.00 ? 3 PMY A H33  1 
+HETATM 154 H  HO2  . PMY B 2 . ? 14.074 -16.134 15.837 1.00 0.00 ? 3 PMY A HO2  1 
+HETATM 155 H  H34  . PMY B 2 . ? 15.063 -15.392 19.091 1.00 0.00 ? 3 PMY A H34  1 
+HETATM 156 H  HCA  . PMY B 2 . ? 15.837 -17.269 16.665 1.00 0.00 ? 3 PMY A HCA  1 
+HETATM 157 H  HCB  . PMY B 2 . ? 16.364 -17.611 18.286 1.00 0.00 ? 3 PMY A HCB  1 
+HETATM 158 H  HCC  . PMY B 2 . ? 17.020 -16.221 17.401 1.00 0.00 ? 3 PMY A HCC  1 
+HETATM 159 H  HNL  . PMY B 2 . ? 13.945 -16.858 20.233 1.00 0.00 ? 3 PMY A HNL  1 
+HETATM 160 H  H37  . PMY B 2 . ? 12.393 -19.038 19.291 1.00 0.00 ? 3 PMY A H37  1 
+HETATM 161 H  H38  . PMY B 2 . ? 11.463 -18.745 21.741 1.00 0.00 ? 3 PMY A H38  1 
+HETATM 162 H  HO3  . PMY B 2 . ? 11.860 -16.780 21.904 1.00 0.00 ? 3 PMY A HO3  1 
+HETATM 163 H  HDA  . PMY B 2 . ? 13.420 -20.371 20.922 1.00 0.00 ? 3 PMY A HDA  1 
+HETATM 164 H  HDB  . PMY B 2 . ? 13.687 -19.837 22.570 1.00 0.00 ? 3 PMY A HDB  1 
+HETATM 165 H  HDC  . PMY B 2 . ? 14.559 -19.075 21.230 1.00 0.00 ? 3 PMY A HDC  1 
+HETATM 166 H  HNM  . PMY B 2 . ? 11.281 -15.581 19.618 1.00 0.00 ? 3 PMY A HNM  1 
+HETATM 167 H  H1E  . PMY B 2 . ? 9.063  -14.869 19.739 1.00 0.00 ? 3 PMY A H1E  1 
+HETATM 168 H  H1X  . PMY B 2 . ? 8.541  -16.526 19.857 1.00 0.00 ? 3 PMY A H1X  1 
+HETATM 169 H  H2E  . PMY B 2 . ? 7.784  -15.732 17.762 1.00 0.00 ? 3 PMY A H2E  1 
+HETATM 170 H  H2X  . PMY B 2 . ? 9.090  -16.882 17.470 1.00 0.00 ? 3 PMY A H2X  1 
+HETATM 171 H  H44  . PMY B 2 . ? 11.587 -12.642 15.214 1.00 0.00 ? 3 PMY A H44  1 
+HETATM 172 H  H47  . PMY B 2 . ? 9.078  -8.226  18.491 1.00 0.00 ? 3 PMY A H47  1 
+HETATM 173 H  HNP  . PMY B 2 . ? 10.300 -6.708  17.870 1.00 0.00 ? 3 PMY A HNP  1 
+HETATM 174 H  H6E  . PMY B 2 . ? 10.875 -4.772  16.705 1.00 0.00 ? 3 PMY A H6E  1 
+HETATM 175 H  H6X  . PMY B 2 . ? 11.879 -5.677  15.596 1.00 0.00 ? 3 PMY A H6X  1 
+HETATM 176 H  H7E  . PMY B 2 . ? 12.365 -5.368  18.561 1.00 0.00 ? 3 PMY A H7E  1 
+HETATM 177 H  H7X  . PMY B 2 . ? 13.032 -4.203  17.462 1.00 0.00 ? 3 PMY A H7X  1 
+HETATM 178 H  H8E  . PMY B 2 . ? 13.545 -7.207  17.148 1.00 0.00 ? 3 PMY A H8E  1 
+HETATM 179 H  H8X  . PMY B 2 . ? 14.847 -6.227  17.947 1.00 0.00 ? 3 PMY A H8X  1 
+HETATM 180 H  HNQ  . PMY B 2 . ? 13.879 -6.206  15.139 1.00 0.00 ? 3 PMY A HNQ  1 
+HETATM 181 H  HEA  . PMY B 2 . ? 17.423 -6.330  15.335 1.00 0.00 ? 3 PMY A HEA  1 
+HETATM 182 H  HEB  . PMY B 2 . ? 17.209 -5.548  16.900 1.00 0.00 ? 3 PMY A HEB  1 
+HETATM 183 H  HEC  . PMY B 2 . ? 17.797 -4.636  15.521 1.00 0.00 ? 3 PMY A HEC  1 
+HETATM 184 H  H54  . PMY B 2 . ? 15.378 -4.105  15.969 1.00 0.00 ? 3 PMY A H54  1 
+HETATM 185 H  H57  . PMY B 2 . ? 15.375 -6.961  13.530 1.00 0.00 ? 3 PMY A H57  1 
+HETATM 186 H  H58  . PMY B 2 . ? 15.285 -6.694  11.065 1.00 0.00 ? 3 PMY A H58  1 
+HETATM 187 H  H59  . PMY B 2 . ? 15.406 -4.510  10.067 1.00 0.00 ? 3 PMY A H59  1 
+HETATM 188 H  H60  . PMY B 2 . ? 15.620 -2.530  11.427 1.00 0.00 ? 3 PMY A H60  1 
+HETATM 189 H  H61  . PMY B 2 . ? 15.716 -2.670  13.855 1.00 0.00 ? 3 PMY A H61  1 
+HETATM 190 CO CO   . 3CO C 3 . ? 13.738 -13.464 22.038 1.00 0.00 ? 4 3CO A CO   1 
+HETATM 191 O  O1   . PEO D 4 . ? 13.150 -14.394 20.378 1.00 0.00 ? 5 PEO A O1   1 
+HETATM 192 O  O2   . PEO D 4 . ? 12.393 -13.615 19.400 1.00 0.00 ? 5 PEO A O2   1 
+HETATM 193 H  HO2  . PEO D 4 . ? 12.612 -12.682 19.378 1.00 0.00 ? 5 PEO A HO2  1 
+# 
+loop_
+_pdbx_nonpoly_scheme.asym_id 
+_pdbx_nonpoly_scheme.entity_id 
+_pdbx_nonpoly_scheme.mon_id 
+_pdbx_nonpoly_scheme.ndb_seq_num 
+_pdbx_nonpoly_scheme.pdb_seq_num 
+_pdbx_nonpoly_scheme.auth_seq_num 
+_pdbx_nonpoly_scheme.pdb_mon_id 
+_pdbx_nonpoly_scheme.auth_mon_id 
+_pdbx_nonpoly_scheme.pdb_strand_id 
+_pdbx_nonpoly_scheme.pdb_ins_code 
+B 2 PMY 1 3 3 PMY PMY A . 
+C 3 3CO 1 4 4 3CO 3CO A . 
+D 4 PEO 1 5 5 PEO PEO A . 
+# 
+_pdbx_struct_assembly.id                   1 
+_pdbx_struct_assembly.details              author_defined_assembly 
+_pdbx_struct_assembly.method_details       ? 
+_pdbx_struct_assembly.oligomeric_details   monomeric 
+_pdbx_struct_assembly.oligomeric_count     1 
+# 
+_pdbx_struct_assembly_gen.assembly_id       1 
+_pdbx_struct_assembly_gen.oper_expression   1 
+_pdbx_struct_assembly_gen.asym_id_list      A,B,C,D 
+# 
+_pdbx_struct_oper_list.id                   1 
+_pdbx_struct_oper_list.type                 'identity operation' 
+_pdbx_struct_oper_list.name                 1_555 
+_pdbx_struct_oper_list.symmetry_operation   x,y,z 
+_pdbx_struct_oper_list.matrix[1][1]         1.0000000000 
+_pdbx_struct_oper_list.matrix[1][2]         0.0000000000 
+_pdbx_struct_oper_list.matrix[1][3]         0.0000000000 
+_pdbx_struct_oper_list.vector[1]            0.0000000000 
+_pdbx_struct_oper_list.matrix[2][1]         0.0000000000 
+_pdbx_struct_oper_list.matrix[2][2]         1.0000000000 
+_pdbx_struct_oper_list.matrix[2][3]         0.0000000000 
+_pdbx_struct_oper_list.vector[2]            0.0000000000 
+_pdbx_struct_oper_list.matrix[3][1]         0.0000000000 
+_pdbx_struct_oper_list.matrix[3][2]         0.0000000000 
+_pdbx_struct_oper_list.matrix[3][3]         1.0000000000 
+_pdbx_struct_oper_list.vector[3]            0.0000000000 
+# 
+loop_
+_pdbx_struct_conn_angle.id 
+_pdbx_struct_conn_angle.ptnr1_label_atom_id 
+_pdbx_struct_conn_angle.ptnr1_label_alt_id 
+_pdbx_struct_conn_angle.ptnr1_label_asym_id 
+_pdbx_struct_conn_angle.ptnr1_label_comp_id 
+_pdbx_struct_conn_angle.ptnr1_label_seq_id 
+_pdbx_struct_conn_angle.ptnr1_auth_atom_id 
+_pdbx_struct_conn_angle.ptnr1_auth_asym_id 
+_pdbx_struct_conn_angle.ptnr1_auth_comp_id 
+_pdbx_struct_conn_angle.ptnr1_auth_seq_id 
+_pdbx_struct_conn_angle.ptnr1_PDB_ins_code 
+_pdbx_struct_conn_angle.ptnr1_symmetry 
+_pdbx_struct_conn_angle.ptnr2_label_atom_id 
+_pdbx_struct_conn_angle.ptnr2_label_alt_id 
+_pdbx_struct_conn_angle.ptnr2_label_asym_id 
+_pdbx_struct_conn_angle.ptnr2_label_comp_id 
+_pdbx_struct_conn_angle.ptnr2_label_seq_id 
+_pdbx_struct_conn_angle.ptnr2_auth_atom_id 
+_pdbx_struct_conn_angle.ptnr2_auth_asym_id 
+_pdbx_struct_conn_angle.ptnr2_auth_comp_id 
+_pdbx_struct_conn_angle.ptnr2_auth_seq_id 
+_pdbx_struct_conn_angle.ptnr2_PDB_ins_code 
+_pdbx_struct_conn_angle.ptnr2_symmetry 
+_pdbx_struct_conn_angle.ptnr3_label_atom_id 
+_pdbx_struct_conn_angle.ptnr3_label_alt_id 
+_pdbx_struct_conn_angle.ptnr3_label_asym_id 
+_pdbx_struct_conn_angle.ptnr3_label_comp_id 
+_pdbx_struct_conn_angle.ptnr3_label_seq_id 
+_pdbx_struct_conn_angle.ptnr3_auth_atom_id 
+_pdbx_struct_conn_angle.ptnr3_auth_asym_id 
+_pdbx_struct_conn_angle.ptnr3_auth_comp_id 
+_pdbx_struct_conn_angle.ptnr3_auth_seq_id 
+_pdbx_struct_conn_angle.ptnr3_PDB_ins_code 
+_pdbx_struct_conn_angle.ptnr3_symmetry 
+_pdbx_struct_conn_angle.value 
+_pdbx_struct_conn_angle.value_esd 
+1  NCA ? A 3FM . ? A 3FM 2 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NJ ? B PMY . ? A PMY 3 ? 1_555 90.3  ? 
+2  NCA ? A 3FM . ? A 3FM 2 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NH ? B PMY . ? A PMY 3 ? 1_555 80.2  ? 
+3  NJ  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NH ? B PMY . ? A PMY 3 ? 1_555 94.2  ? 
+4  NCA ? A 3FM . ? A 3FM 2 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NG ? B PMY . ? A PMY 3 ? 1_555 98.3  ? 
+5  NJ  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NG ? B PMY . ? A PMY 3 ? 1_555 171.3 ? 
+6  NH  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NG ? B PMY . ? A PMY 3 ? 1_555 86.1  ? 
+7  NCA ? A 3FM . ? A 3FM 2 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NC ? B PMY . ? A PMY 3 ? 1_555 95.4  ? 
+8  NJ  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NC ? B PMY . ? A PMY 3 ? 1_555 96.6  ? 
+9  NH  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NC ? B PMY . ? A PMY 3 ? 1_555 168.4 ? 
+10 NG  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 NC ? B PMY . ? A PMY 3 ? 1_555 83.9  ? 
+11 NCA ? A 3FM . ? A 3FM 2 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 O1 ? D PEO . ? A PEO 5 ? 1_555 173.2 ? 
+12 NJ  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 O1 ? D PEO . ? A PEO 5 ? 1_555 87.4  ? 
+13 NH  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 O1 ? D PEO . ? A PEO 5 ? 1_555 93.6  ? 
+14 NG  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 O1 ? D PEO . ? A PEO 5 ? 1_555 84.0  ? 
+15 NC  ? B PMY . ? A PMY 3 ? 1_555 CO ? C 3CO . ? A 3CO 4 ? 1_555 O1 ? D PEO . ? A PEO 5 ? 1_555 91.2  ? 
+# 
+loop_
+_pdbx_audit_revision_history.ordinal 
+_pdbx_audit_revision_history.data_content_type 
+_pdbx_audit_revision_history.major_revision 
+_pdbx_audit_revision_history.minor_revision 
+_pdbx_audit_revision_history.revision_date 
+1 'Structure model' 1 0 1999-07-30 
+2 'Structure model' 1 1 2008-04-26 
+3 'Structure model' 1 2 2011-07-13 
+4 'Structure model' 2 0 2020-07-29 
+# 
+loop_
+_pdbx_audit_revision_details.ordinal 
+_pdbx_audit_revision_details.revision_ordinal 
+_pdbx_audit_revision_details.data_content_type 
+_pdbx_audit_revision_details.provider 
+_pdbx_audit_revision_details.type 
+_pdbx_audit_revision_details.description 
+_pdbx_audit_revision_details.details 
+1 1 'Structure model' repository 'Initial release' ?                          ? 
+2 4 'Structure model' repository Remediation       'Carbohydrate remediation' ? 
+# 
+loop_
+_pdbx_audit_revision_group.ordinal 
+_pdbx_audit_revision_group.revision_ordinal 
+_pdbx_audit_revision_group.data_content_type 
+_pdbx_audit_revision_group.group 
+1 2 'Structure model' 'Version format compliance' 
+2 3 'Structure model' 'Version format compliance' 
+3 4 'Structure model' 'Atomic model'              
+4 4 'Structure model' 'Data collection'           
+5 4 'Structure model' 'Derived calculations'      
+6 4 'Structure model' 'Structure summary'         
+# 
+loop_
+_pdbx_audit_revision_category.ordinal 
+_pdbx_audit_revision_category.revision_ordinal 
+_pdbx_audit_revision_category.data_content_type 
+_pdbx_audit_revision_category.category 
+1  4 'Structure model' atom_site                     
+2  4 'Structure model' chem_comp                     
+3  4 'Structure model' entity                        
+4  4 'Structure model' pdbx_branch_scheme            
+5  4 'Structure model' pdbx_chem_comp_identifier     
+6  4 'Structure model' pdbx_entity_branch            
+7  4 'Structure model' pdbx_entity_branch_descriptor 
+8  4 'Structure model' pdbx_entity_branch_link       
+9  4 'Structure model' pdbx_entity_branch_list       
+10 4 'Structure model' pdbx_entity_nonpoly           
+11 4 'Structure model' pdbx_nonpoly_scheme           
+12 4 'Structure model' pdbx_struct_assembly_gen      
+13 4 'Structure model' pdbx_struct_conn_angle        
+14 4 'Structure model' struct_asym                   
+15 4 'Structure model' struct_conn                   
+16 4 'Structure model' struct_site                   
+17 4 'Structure model' struct_site_gen               
+# 
+loop_
+_pdbx_audit_revision_item.ordinal 
+_pdbx_audit_revision_item.revision_ordinal 
+_pdbx_audit_revision_item.data_content_type 
+_pdbx_audit_revision_item.item 
+1  4 'Structure model' '_atom_site.Cartn_x'                          
+2  4 'Structure model' '_atom_site.Cartn_y'                          
+3  4 'Structure model' '_atom_site.Cartn_z'                          
+4  4 'Structure model' '_atom_site.auth_atom_id'                     
+5  4 'Structure model' '_atom_site.auth_comp_id'                     
+6  4 'Structure model' '_atom_site.auth_seq_id'                      
+7  4 'Structure model' '_atom_site.label_asym_id'                    
+8  4 'Structure model' '_atom_site.label_atom_id'                    
+9  4 'Structure model' '_atom_site.label_comp_id'                    
+10 4 'Structure model' '_atom_site.label_entity_id'                  
+11 4 'Structure model' '_atom_site.type_symbol'                      
+12 4 'Structure model' '_chem_comp.mon_nstd_flag'                    
+13 4 'Structure model' '_chem_comp.name'                             
+14 4 'Structure model' '_chem_comp.type'                             
+15 4 'Structure model' '_pdbx_struct_assembly_gen.asym_id_list'      
+16 4 'Structure model' '_pdbx_struct_conn_angle.ptnr1_label_asym_id' 
+17 4 'Structure model' '_pdbx_struct_conn_angle.ptnr2_label_asym_id' 
+18 4 'Structure model' '_pdbx_struct_conn_angle.ptnr3_label_asym_id' 
+19 4 'Structure model' '_struct_conn.pdbx_dist_value'                
+20 4 'Structure model' '_struct_conn.pdbx_leaving_atom_flag'         
+21 4 'Structure model' '_struct_conn.pdbx_value_order'               
+22 4 'Structure model' '_struct_conn.ptnr1_label_asym_id'            
+23 4 'Structure model' '_struct_conn.ptnr1_label_atom_id'            
+24 4 'Structure model' '_struct_conn.ptnr2_label_asym_id'            
+25 4 'Structure model' '_struct_conn.ptnr2_label_atom_id'            
+# 
+loop_
+_pdbx_branch_scheme.asym_id 
+_pdbx_branch_scheme.entity_id 
+_pdbx_branch_scheme.mon_id 
+_pdbx_branch_scheme.num 
+_pdbx_branch_scheme.pdb_asym_id 
+_pdbx_branch_scheme.pdb_mon_id 
+_pdbx_branch_scheme.pdb_seq_num 
+_pdbx_branch_scheme.auth_asym_id 
+_pdbx_branch_scheme.auth_mon_id 
+_pdbx_branch_scheme.auth_seq_num 
+_pdbx_branch_scheme.hetero 
+A 1 GUP 1 A GUP 1 A GUP 1 n 
+A 1 3FM 2 A 3FM 2 A 3FM 2 n 
+# 
+loop_
+_pdbx_chem_comp_identifier.comp_id 
+_pdbx_chem_comp_identifier.type 
+_pdbx_chem_comp_identifier.program 
+_pdbx_chem_comp_identifier.program_version 
+_pdbx_chem_comp_identifier.identifier 
+GUP 'CONDENSED IUPAC CARBOHYDRATE SYMBOL' GMML     1.0 LGulpa           
+GUP 'COMMON NAME'                         GMML     1.0 a-L-gulopyranose 
+GUP 'IUPAC CARBOHYDRATE SYMBOL'           PDB-CARE 1.0 a-L-Gulp         
+GUP 'SNFG CARBOHYDRATE SYMBOL'            GMML     1.0 Gul              
+# 
+_pdbx_entity_branch.entity_id   1 
+_pdbx_entity_branch.type        oligosaccharide 
+# 
+loop_
+_pdbx_entity_branch_descriptor.ordinal 
+_pdbx_entity_branch_descriptor.entity_id 
+_pdbx_entity_branch_descriptor.descriptor 
+_pdbx_entity_branch_descriptor.type 
+_pdbx_entity_branch_descriptor.program 
+_pdbx_entity_branch_descriptor.program_version 
+1 1 'WURCS=2.0/2,2,1/[a1121h-1a_1-5][a1122h-1a_1-5_3*OCN/3=O]/1-2/a2-b1' WURCS  PDB2Glycan 1.1.0 
+2 1 '[][L-1-deoxy-Gulp]{[(2+1)][a-D-Manp]{[(3+1)][&lt;C1N1O1&gt;]{}}}'   LINUCS PDB-CARE   ?     
+# 
+_pdbx_entity_branch_link.link_id                    1 
+_pdbx_entity_branch_link.entity_id                  1 
+_pdbx_entity_branch_link.entity_branch_list_num_1   2 
+_pdbx_entity_branch_link.comp_id_1                  3FM 
+_pdbx_entity_branch_link.atom_id_1                  C1 
+_pdbx_entity_branch_link.leaving_atom_id_1          O1 
+_pdbx_entity_branch_link.entity_branch_list_num_2   1 
+_pdbx_entity_branch_link.comp_id_2                  GUP 
+_pdbx_entity_branch_link.atom_id_2                  O2 
+_pdbx_entity_branch_link.leaving_atom_id_2          HO2 
+_pdbx_entity_branch_link.value_order                sing 
+_pdbx_entity_branch_link.details                    ? 
+# 
+loop_
+_pdbx_entity_branch_list.entity_id 
+_pdbx_entity_branch_list.comp_id 
+_pdbx_entity_branch_list.num 
+_pdbx_entity_branch_list.hetero 
+1 GUP 1 n 
+1 3FM 2 n 
+# 
+loop_
+_pdbx_entity_nonpoly.entity_id 
+_pdbx_entity_nonpoly.name 
+_pdbx_entity_nonpoly.comp_id 
+2 'AGLYCON OF PEPLOMYCIN' PMY 
+3 'COBALT (III) ION'      3CO 
+4 'HYDROGEN PEROXIDE'     PEO 
+# 
