@@ -30,9 +30,16 @@ def create_unaligned_fasta_files(mf, tsv, name_dr):
             clusters = [line.strip().split() for line in tsv_file if line.strip()]
 
         with open(mf, 'r') as multi_fasta_file:
-            fasta_data = multi_fasta_file.read().split('\n>')
+            fasta_data = ('>' + multi_fasta_file.read()).split('\n>')
             
-        Dict = {data.split('\n', 1)[0].split(sep='\t')[0].strip(): data.split('\n', 1)[1] for data in fasta_data}
+        
+        Dict = {}
+        for data in fasta_data:
+            if data:
+                header, sequence = data.split('\n', 1)
+                seq_id = header.split()[0].strip('>') 
+                Dict[seq_id] = sequence.strip()
+
         lclusters_unaligned = []
 
         print('Reading members and creating unaligned multifasta files:')
@@ -42,16 +49,16 @@ def create_unaligned_fasta_files(mf, tsv, name_dr):
                 namefile_unaligned = os.path.join(name_dr, f'{cluster_id}_unaligned.fa')
                 with open(namefile_unaligned, 'w') as file:
                     for seq_id in cluster:
-                        file.write(f'>{seq_id}\n{Dict.get(seq_id, "")}\n')
+                        sequence = Dict.get(seq_id, "")
+                        if sequence:
+                            file.write(f'>{seq_id}\n{sequence}\n')
                     if len(cluster) > 1:
                         lclusters_unaligned.append(namefile_unaligned)
         
         return lclusters_unaligned
 
-    except FileNotFoundError as e:
-        sys.stderr.write(f"File not found: {e}\n")
     except Exception as e:
-        sys.stderr.write(f"Error in create_unaligned_fasta_files: {e}\n")
+        print(f"Error occurred: {e}")
 
 def launch_mafft_on_clusters(lclusters_unaligned, name_dr):
     os.makedirs(name_dr, exist_ok=True)
