@@ -26,6 +26,7 @@ def launchCifAlignment(mf, options):
     mf_base = os.path.splitext(os.path.basename(mf))[0]
     log_filename = f"log_{mf_base}.log"
     output_dir = options.get('o', '.') 
+    os.makedirs(output_dir, exist_ok=True)
     log_path = os.path.join(output_dir, log_filename)  
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
