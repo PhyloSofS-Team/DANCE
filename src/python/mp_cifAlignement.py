@@ -5,8 +5,8 @@ import time
 import multiprocessing
 import tqdm
 import argparse
-import logging
 import os
+import logging
 import datetime
 
 env_path = '.env'
@@ -23,48 +23,47 @@ def launchCifAlignmentWrapper(args):
     return launchCifAlignment(*args)
 
 def launchCifAlignment(mf, options):
+    mf_base = os.path.splitext(os.path.basename(mf))[0]
+    log_filename = f"log_{mf_base}.log"
+    output_dir = options.get('o', '.') 
+    log_path = os.path.join(output_dir, log_filename)  
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    handler = logging.FileHandler(log_path)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
     cmd = [cif_alignment_path, '-i', mf]
     for key, value in options.items():
         if value:
-            if key in ['s', 'n', 'x', 'y', 'd', 'o']: 
+            if key in ['s', 'n', 'x', 'y', 'd', 'o']:
                 cmd.extend(['-' + key, str(value)])
             else:
                 cmd.append('-' + key)
-            
+
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    log_entry = f"Executing: {' '.join(cmd)}\nSTDOUT:\n{result.stdout}\nSTDERR:\n{result.stderr}\n"
-    
-    # Logging the command execution details
-    logging.info(f"Executing: {' '.join(cmd)}")
-    logging.info(f"STDOUT: {result.stdout}")
+
+    logger.info(f"Executing: {' '.join(cmd)}")
+    logger.info(f"STDOUT: {result.stdout}")
     if result.stderr:
-        logging.error(f"STDERR: {result.stderr}")
-    
-    return log_entry
+        logger.error(f"STDERR: {result.stderr}")
 
-def process_cif_alignment(mf_files, options, log_filename=None):
+    logger.removeHandler(handler)
 
-    output_dir = options.get('o', '.')
-    os.makedirs(output_dir, exist_ok=True)   
-    if log_filename is None:
-        current_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-        log_filename = f"cifAlignment-{current_time}.log"
+    return result.stdout, result.stderr
 
-    log_path = os.path.join(output_dir, log_filename)  
-    logging.basicConfig(filename=log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-    logging.info('Started logging.')
 
-    logging.info('Launching cifAlignment')
+
+def process_cif_alignment(mf_files, options):
     print('Creating aligned multistructure files:')
     t1 = time.time()
     with multiprocessing.Pool() as pool:
-        log_entries = list(tqdm.tqdm(pool.imap_unordered(launchCifAlignmentWrapper, [(mf, options) for mf in mf_files]), total=len(mf_files)))
+        for _ in tqdm.tqdm(pool.imap_unordered(launchCifAlignmentWrapper, [(mf, options) for mf in mf_files]), total=len(mf_files)):
+            pass
     t2 = time.time()
 
-    logging.info(f"cifAlignment time: {t2 - t1}")
-    logging.info('Finished logging.')
-
-    return log_entries
+    
 
 
 def run_cif_alignment(mfdir, options, listfile=None):
@@ -72,7 +71,6 @@ def run_cif_alignment(mfdir, options, listfile=None):
         with open(listfile, 'r') as f:
             mf_files = [line.strip() for line in f.readlines()]
     else:
-        # Générer une liste de fichiers .fa, en excluant les fichiers *_unaligned.fa
         all_fa_files = set(glob.glob(os.path.join(mfdir, '*.fa')))
         unaligned_fa_files = set(glob.glob(os.path.join(mfdir, '*_unaligned.fa')))
         mf_files = list(all_fa_files - unaligned_fa_files)
