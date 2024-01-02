@@ -456,6 +456,11 @@ int main(int argc, char** argv) {
         }
     }
 
+int n_min_column = 5;  // maybe make this an option
+if (len_seq < n_min_column) {
+    std::cout << "Error: Number of columns left in the alignment (" << len_seq << ") is below the minimum (" << n_min_column << "). Exiting program." << std::endl;
+    exit(0);
+}
 
 std::string consensus = "";
 for (int i = 0; i < len_seq; ++i) {
@@ -514,7 +519,7 @@ for (int i = 0; i < len_seq; ++i) {
             std::cout << "Consensus Sequence: \n" << consensus << std::endl; 
             } 
             else {
-                // Trouver l'index de la séquence de référence spécifiée
+                // Find the index of the reference
                 auto it = std::find(names.begin(), names.end(), referenceName);
                 if (it != names.end()) {
                     maxarg = std::distance(names.begin(), it);
@@ -972,6 +977,7 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
             int indexi = -1;
             int indexj = -1;
             std::vector<double> subset_coverage;
+            int common_residues = 0;
             for(int k=0; k< len_seq; k++) {
 
                 bool aligned = false;
@@ -986,8 +992,9 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
                     aligned = false;
                 }
 
-                if(aligned) { // fill in the arrays
-
+                if(aligned) { 
+                    // fill in the arrays
+                    common_residues++;
                     if (Calpha){
                         if (use_weights) {
                             subset_coverage.push_back(coverage[k]);
@@ -1010,24 +1017,31 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
             }
 
             assert(posi.size() == posj.size());
-            gemmi::SupResult result;
-            if (use_weights){
-                result = gemmi::superpose_positions(posi.data(), posj.data(), posi.size(), subset_coverage.data());
+            
+            if (common_residues > 4) { //we need at least 5 common residues to superpose, maybe make this an option
+                
+                gemmi::SupResult result;
+                if (use_weights){
+                    result = gemmi::superpose_positions(posi.data(), posj.data(), posi.size(), subset_coverage.data());
+                }
+                else{
+                    result = gemmi::superpose_positions(posi.data(), posj.data(), posi.size(), NULL);
+                }
+
+                if(iSeq == 0 && jSeq) { //superpose  jSeq on iSeq
+                    for (gemmi::Residue &res : tst.models[jSeq].chains[0].residues)
+                    for (gemmi::Atom &atom : res.atoms)
+                        atom.pos = gemmi::Position(result.transform.apply(atom.pos));
+                }
+
+                // and store RMSD
+                rmsd_mat[iSeq][jSeq] = result.rmsd;
+                rmsd_mat[jSeq][iSeq] = result.rmsd;
             }
             else{
-                result = gemmi::superpose_positions(posi.data(), posj.data(), posi.size(), NULL);
+                rmsd_mat[iSeq][jSeq] = NAN;
+                rmsd_mat[jSeq][iSeq] = NAN;
             }
-
-            if(iSeq == 0 && jSeq) { //superpose  jSeq on iSeq
-                for (gemmi::Residue &res : tst.models[jSeq].chains[0].residues)
-                  for (gemmi::Atom &atom : res.atoms)
-                    atom.pos = gemmi::Position(result.transform.apply(atom.pos));
-            }
-
-            // and store RMSD
-            rmsd_mat[iSeq][jSeq] = result.rmsd;
-            rmsd_mat[jSeq][iSeq] = result.rmsd;
-
         }
     }
     return rmsd_mat;
@@ -1061,7 +1075,7 @@ bool removeDuplicates(
     isFirstCall = false;
     for (size_t iSeq=0 ; iSeq< names.size(); ++iSeq){
         for (size_t jSeq=iSeq+1 ; jSeq< names.size(); ++jSeq) { 
-            if(rmsd_mat[iSeq][jSeq]<similarity_threshold || (iSeq == 0 && rmsd_mat[iSeq][jSeq]!=rmsd_mat[iSeq][jSeq])){ //RMSD threshold is here ! We remove any seq that has nan rmsd with reference
+            if(rmsd_mat[iSeq][jSeq]<similarity_threshold || (iSeq == 0 && rmsd_mat[iSeq][jSeq]!=rmsd_mat[iSeq][jSeq])){ // We remove any seq that has nan rmsd with reference
                 auto i_in_set = pos_to_remove.find(iSeq);
                 auto j_in_set = pos_to_remove.find(jSeq);
                 if (i_in_set !=pos_to_remove.end() || j_in_set != pos_to_remove.end()){
@@ -1104,21 +1118,32 @@ bool removeDuplicates(
                         
                     }
                 }
-                if (discard_j){
-                    //we discard the last in alphabetical order if it can be
+                
+                if (discard_j) {
+                    // We discard the last in alphabetical order if it can be
                     pos_to_remove.insert(jSeq);
-                    std::cout<<"conformation n° "<<jSeq<<" ("<<names[jSeq]<<") is identical to - or included in n° "<<iSeq<<" ("<<names[iSeq]<<")"<<std::endl;
-                    if (remfile){
-                        fprintf(remfile,"%s,%s,%.3e\n",names[jSeq].c_str(),names[iSeq].c_str(),rmsd_mat[iSeq][jSeq]);
+
+                    if (std::isnan(rmsd_mat[iSeq][jSeq])) {
+                        std::cout << "conformation n° " << jSeq << " (" << names[jSeq] << ") was removed because it lacks common residue with the reference n° "
+                                << iSeq << " (" << names[iSeq] << ")" << std::endl;
+                    } else {
+                        std::cout << "conformation n° " << jSeq << " (" << names[jSeq] << ") is identical to - or included in n° "
+                                << iSeq << " (" << names[iSeq] << ") with RMSD: " << rmsd_mat[iSeq][jSeq] << std::endl;
+                    }
+
+                    if (remfile) {
+                        fprintf(remfile, "%s,%s,%.3e\n", names[jSeq].c_str(), names[iSeq].c_str(), rmsd_mat[iSeq][jSeq]);
                     }
                 }
-                else if (discard_i && iSeq!=0){
+                else if (discard_i && iSeq != 0) {
                     pos_to_remove.insert(iSeq);
-                    std::cout<<"conformation n° "<<iSeq<<" ("<<names[iSeq]<<") is identical to - or included in n° "<<jSeq<<" ("<<names[jSeq]<<")"<<std::endl;
-                    if (remfile){
-                        fprintf(remfile,"%s,%s,%.3e\n",names[iSeq].c_str(),names[jSeq].c_str(),rmsd_mat[iSeq][jSeq]);
+                    std::cout << "conformation n° " << iSeq << " (" << names[iSeq] << ") is identical to - or included in n° " 
+                            << jSeq << " (" << names[jSeq] << ") with RMSD: " << rmsd_mat[iSeq][jSeq] << std::endl;
+                    if (remfile) {
+                        fprintf(remfile, "%s,%s,%.3e\n", names[iSeq].c_str(), names[jSeq].c_str(), rmsd_mat[iSeq][jSeq]);
                     }
                 }
+
             }
 
         }
