@@ -74,11 +74,10 @@ def main():
     parser.add_argument('-i', '--id', required=True, help="Identity threshold")
     parser.add_argument('-c', '--cov', required=True, help="Coverage threshold")
     parser.add_argument('-m', '--multifasta', required=True, help="Path to the multifasta file")
-    parser.add_argument('-d', '--conda_env', required=True, help="Conda environment name")
     parser.add_argument('-o', '--output_dir', required=True, help="Output directory for mmseqs files")
     args = parser.parse_args()
 
-    process_mmseqs(args.id, args.cov, args.multifasta, args.conda_env, args.output_dir)
+    process_mmseqs(args.id, args.cov, args.multifasta, args.output_dir)
 
 if __name__ == "__main__":
     main()

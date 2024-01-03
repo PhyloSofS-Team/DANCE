@@ -80,7 +80,7 @@ def run_cif_alignment(mfdir, options, listfile=None):
 
 def main():
     parser = argparse.ArgumentParser(description="Run cifAlignment with specified options.")
-    parser.add_argument("-i", "--inputAln", help="Path to the aln file.")
+    parser.add_argument("-i", "--alnDir", help="Path to the aln directory.")
     parser.add_argument("-d", "--cifDir", help="Path to the cif directory.")
     parser.add_argument("-o", "--outputDir", help="Path to the output directory.")
     parser.add_argument("-c", "--centermass", action="store_true", help="Centermass and alignment on Calpha only.")
@@ -114,15 +114,11 @@ def main():
         'd': args.cifDir,  
         'o': args.outputDir  
     }
-    if args.inputAln:
-        mf_files = [args.inputAln]
-    elif args.listfile:
-        with open(args.listfile, 'r') as f:
-            mf_files = [line.strip() for line in f.readlines()]
+    
+    if not args.alnDir and not args.listfile:
+        raise ValueError("Either --alnDir or --listfile must be provided, use -h for help.")
     else:
-        raise ValueError("Either --inputAln or --listfile must be provided")
-
-    run_cif_alignment(mf_files, options)
+        run_cif_alignment(args.alnDir, options, args.listfile)
 
 
 if __name__ == "__main__":

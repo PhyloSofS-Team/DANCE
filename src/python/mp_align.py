@@ -1,7 +1,6 @@
 import sys
 import tqdm
 import subprocess
-import time
 import multiprocessing
 import argparse
 import os
@@ -65,14 +64,13 @@ def launch_mafft_on_clusters(lclusters_unaligned, name_dr):
     lclusters_aligned = [cluster.replace('_unaligned', '') for cluster in lclusters_unaligned]
 
     print('Launching Mafft on multifasta files:')
-    t1 = time.time()
+
     try:
         with multiprocessing.Pool() as pool:
             list(tqdm.tqdm(pool.imap_unordered(launchMafft, zip(lclusters_unaligned, lclusters_aligned)), total=len(lclusters_aligned)))
     except Exception as e:
         sys.stderr.write(f"Error in launch_mafft_on_clusters: {e}\n")
-    t2 = time.time()
-    #print(f"{name_dr} alignment time: {t2 - t1}")
+
 
 def process_files(mf, tsv, name_dr):
     lclusters_unaligned = create_unaligned_fasta_files(mf, tsv, name_dr)

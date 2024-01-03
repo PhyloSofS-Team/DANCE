@@ -5,7 +5,7 @@ def main():
 
     identity = 0.8  
     coverage = 0.8 
-    bool_weight = True
+    bool_weight = True # Enable weighted structural alignment
     cif_dir = 'test/cifs/' # Directory containing CIF files
     mmseqs_dir = 'test/mmseqs_output/' # Directory to store the MMseqs2 output files
     aligned_dir = 'test/aligned/' # Directory to store the aligned sequences
