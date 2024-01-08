@@ -1,4 +1,4 @@
-# DANCE: Protein Ensemble Creator
+# DANCE: Pipeline for Protein Ensemble Creation
 
 DANCE is designed to process a collection of protein 3D structures provided in Crystallographic Information File (CIF) format, producing protein or protein family-specific conformational ensembles in either CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these ensembles.
 
@@ -15,6 +15,9 @@ DANCE's algorithm unfolds in the following steps:
 - **Structure Extraction and Generation of Conformational Ensembles:** This step involves extracting 3D coordinates of backbone atoms from CIF files, reconstructing missing atoms, and discarding incomplete residues or chains. It then groups conformations based on sequence clustering and superimposes them using the Quaternion Characteristic Polynomial method, reducing structural redundancy. The final output is a conformational ensemble in PDB/CIF format, accompanied by corresponding Multiple Sequence Alignments (MSAs) and Root Mean Square Deviation (RMSD) matrices.
 
 - **Extraction of Linear Motions:** Performs Principal Component Analysis (PCA) on each ensemble's 3D coordinates to identify and interpret linear motions in the protein structures.
+
+
+While each of these steps is managed by an individual Python script capable of functioning autonomously, the complete pipeline that invokes these scripts in sequence is implemented in wrapper.py. This approach allows users the flexibility to either utilize the entire pipeline for comprehensive analysis or employ individual scripts for specific tasks as needed.
 
 ### Getting Started
 

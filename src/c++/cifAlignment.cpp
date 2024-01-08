@@ -132,17 +132,17 @@ int main(int argc, char** argv) {
                 std::cout << "--cifDir, -d <path>           Path to the cif directory\n";
                 std::cout << "--outputDir, -o <path>        Path to the output directory\n";
                 std::cout << "--centermass, -c              Centermass and alignment on Calpha only\n";
-                std::cout << "--weighted, -w                Enable weighted alignment\n";
-                std::cout << "--similarity, -s <float>      Set RMSD similarity threshold (default: 0.1A)\n";
+                std::cout << "--weighted, -w                Weight the aligment by the coverage of the amino acid in the MSA\n";
+                std::cout << "--similarity, -s <float>      Set RMSD similarity threshold for conformation removing (default: 0.1A)\n";
                 std::cout << "--outputPDB, -p               Enable output pdb file\n";
                 std::cout << "--outputCif, -f               Enable output cif file\n";
                 std::cout << "--outputAln, -a               Enable output aln file\n";
-                std::cout << "--outputRmsd, -r              Enable output RMSD file option\n";
+                std::cout << "--outputRmsd, -r              Enable output of RMSD matrix\n";
                 std::cout << "--outputRemoved, -u           Enable output of removed sequences file information\n";
                 std::cout << "--numReferences, -n <int>     Set the number of references (default: 1)\n";
                 std::cout << "--continentSize, -x <int>     Set the continent size (strictly superior to)(default: 4)\n";
                 std::cout << "--isolationDistance, -y <int> Set the isolation distance (superior or equal to)(default: 15)\n";
-                std::cout << "--referenceName, -e <name>    Name of the reference sequence\n";
+                std::cout << "--referenceName, -e <name>    Force the choice of the reference with the given name\n";
                 std::cout << "--outputRawCoords, -b         Enable output raw coords file option\n";
                 std::cout << "--help, -h                    Display this help message\n";
                 exit(0);
@@ -645,7 +645,7 @@ for (int i = 0; i < len_seq; ++i) {
         
             int iterationCountRem = 1;
 
-            while (sequencesRemoved && use_weights) {
+            while (sequencesRemoved && use_weights) { // if we remove a sequence it changes the coverage and we need to realign
                 iterationCountRem++;
                 std::cout<<"Realigning and removing duplicates, iteration "<<iterationCountRem<<std::endl;
                 rmsd_mat = alignAndComputeRMSD(seqs, names, tst, len_seq, use_weights, Calpha); //structural aln is done here
