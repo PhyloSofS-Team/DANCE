@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from src.python import mp_align, mp_cifAlignement, mp_cifConverter, mmseqs, mp_write_stats
+from src.python import mp_align, mp_cifAlignment, mp_cifConverter, mmseqs, mp_write_stats
 
 def main():
 
@@ -37,7 +37,7 @@ def main():
     mp_align.process_files(mf_name, f'{mmseqs_dir}{cluster_db_filename}', aligned_dir)
 
     # Run CIF alignment with specified options to create the 3d models
-    mp_cifAlignement.run_cif_alignment(aligned_dir, cif_alignment_options)
+    mp_cifAlignment.run_cif_alignment(aligned_dir, cif_alignment_options)
 
     # Compute statistics of the models
     mp_write_stats.main(use_weights=bool_weight, directory=models_dir)
