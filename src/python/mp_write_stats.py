@@ -234,9 +234,16 @@ def compute_stats(idclu, directory, use_weights=False):
         rmsd_max, rmsd_mean, rmsd_std = f'{np.nanmax(mat):.3f}', f'{np.nanmean(mat):.3f}', f'{np.nanstd(mat):.3f}'
 
         ### coordinates loading
-        coords = load_tensor(directory + idclu+'_raw_coords_ca.bin').T
-        mask = load_mask(directory + idclu+'_raw_coords_ca_mask.bin').T
-        col_to_keep = np.where(np.sum(mask,axis=1) > 1)[0] #toutes les colonnes où il y a plus de 2 résidus
+        try: #first we try to load the coordinates from the binary files containing only the CA atoms
+            coords = load_tensor(directory + idclu+'_raw_coords_ca.bin').T
+            mask = load_mask(directory + idclu+'_raw_coords_ca_mask.bin').T
+
+        except: #if it fails, we load the coordinates from the binary files containing all the atoms
+            coords = load_tensor(directory + idclu+'_raw_coords.bin').T
+            mask = load_mask(directory + idclu+'_raw_coords_mask.bin').T
+            
+
+        col_to_keep = np.where(np.sum(mask,axis=1) > 1)[0] #all the columns with 2 or more residues
         mask = mask[col_to_keep]
         coords=coords[col_to_keep]
         

@@ -13,7 +13,7 @@ def main():
     mf_name = 'test/output.fa' # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
 
     cif_alignment_options = {
-        'c': True,  # Alignment and center of mass calculation is done only with the CA atoms
+        'c': False,  # Alignment and center of mass calculation is done only with the CA atoms
         'w': bool_weight,  # Enable weighted alignment
         'a': True,  # Enable the output of the multifasta file of the aligned sequences corresponding to the models
         'r': True,  # Enable output option RMSD matrix of the conformations corresponding to the models
@@ -40,7 +40,7 @@ def main():
     mp_cifAlignment.run_cif_alignment(aligned_dir, cif_alignment_options)
 
     # Compute statistics of the models
-    mp_write_stats.main(use_weights=bool_weight, directory=models_dir)
+    mp_write_stats.main(use_weights=bool_weight, directory=models_dir) # to write the stats, the options a, r and b must be enabled in cif_alignment_options
 
 if __name__ == '__main__':
     main()
