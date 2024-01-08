@@ -231,25 +231,6 @@ int main(int argc, char** argv) {
         }
     }
 
-    // print the options with their values
-    std::cout << "Input Alignment (ALN): " << inAln << std::endl;
-    std::cout << "CIF Directory Path: " << cifDir << std::endl;
-    std::cout << "Similarity Threshold: " << similarity_threshold << "A\n";
-    std::cout << "Continent Size: " << continentSize << "\n";
-    std::cout << "Isolation Distance: " << isolationDistance << "\n";
-    std::cout << "Number of References: " << nb_ref << "\n";
-    std::cout << "Reference Name: " << (referenceName.empty() ? "None" : referenceName) << "\n";
-    std::cout << "Output Directory: " << outputDir << "\n";
-    // print the bool options
-    std::cout << "Centermass and Calpha: " << std::boolalpha << Calpha << "\n";
-    std::cout << "Weighted Alignment: " << std::boolalpha << use_weights << "\n";
-    std::cout << "Output PDB: " << std::boolalpha << output_pdb << "\n";
-    std::cout << "Output CIF: " << std::boolalpha << output_cif << "\n";
-    std::cout << "Output ALN: " << std::boolalpha << output_aln << "\n";
-    std::cout << "Output RMSD: " << std::boolalpha << output_rmsd << "\n";
-    std::cout << "Output Raw Coords: " << std::boolalpha << output_raw_coords << "\n";
-    std::cout << "Output Removed Sequences: " << std::boolalpha << output_removed << "\n";
-
     std::string id;
     std::string seq;
 
@@ -629,18 +610,7 @@ for (int i = 0; i < len_seq; ++i) {
         
         if (!Calpha){
             gemmi::CenterOfMass centermass = gemmi::calculate_center_of_mass(tst.models[0].chains[0]);
-            //computes the center of mass of the reference with real weights (but sometimes it is NaN for some reason, in this case we use the Calphas)
-            if(centermass.get().x!=centermass.get().x || centermass.get().y!=centermass.get().y || centermass.get().z!=centermass.get().z){
-                Calpha = true;
-                std::cout<<"NaN Problem detected, Calpha set to true!"<<std::endl;
-            }
-            else{
-                for (gemmi::Residue &res : tst.models[0].chains[0].residues){
-                    for (gemmi::Atom &atom : res.atoms){
-                        atom.pos = atom.pos - centermass.get();
-                    }
-                }
-        }
+            //computes the center of mass of the reference with real weights 
         }
 
         

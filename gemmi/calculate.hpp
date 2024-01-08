@@ -65,7 +65,7 @@ template<class T> CenterOfMass calculate_center_of_mass(const T& obj) {
   return total;
 }
 template<> inline CenterOfMass calculate_center_of_mass(const Atom& atom) {
-  double w_mass = atom.element.weight() * atom.occ;
+  double w_mass = atom.element.weight(); // * atom.occ; assumme occupancy is always 1
   return CenterOfMass{Position(atom.pos * w_mass), w_mass};
 }
 
