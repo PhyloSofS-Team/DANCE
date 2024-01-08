@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
     };
     int opt;
     int option_index = 0;
-    while ((opt = getopt_long(argc, argv, "hi:d:cws:pfaurn:x:y:e:o:b:", long_options, &option_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "hi:d:cws:pfarun:x:y:e:o:b", long_options, &option_index)) != -1) {
         switch (opt) {
             case 'h':
                 std::cout << "Usage: " << argv[0] << " [options]\n";
@@ -230,6 +230,25 @@ int main(int argc, char** argv) {
                 exit(1);
         }
     }
+
+    // print the options with their values
+    std::cout << "Input Alignment (ALN): " << inAln << std::endl;
+    std::cout << "CIF Directory Path: " << cifDir << std::endl;
+    std::cout << "Similarity Threshold: " << similarity_threshold << "A\n";
+    std::cout << "Continent Size: " << continentSize << "\n";
+    std::cout << "Isolation Distance: " << isolationDistance << "\n";
+    std::cout << "Number of References: " << nb_ref << "\n";
+    std::cout << "Reference Name: " << (referenceName.empty() ? "None" : referenceName) << "\n";
+    std::cout << "Output Directory: " << outputDir << "\n";
+    // print the bool options
+    std::cout << "Centermass and Calpha: " << std::boolalpha << Calpha << "\n";
+    std::cout << "Weighted Alignment: " << std::boolalpha << use_weights << "\n";
+    std::cout << "Output PDB: " << std::boolalpha << output_pdb << "\n";
+    std::cout << "Output CIF: " << std::boolalpha << output_cif << "\n";
+    std::cout << "Output ALN: " << std::boolalpha << output_aln << "\n";
+    std::cout << "Output RMSD: " << std::boolalpha << output_rmsd << "\n";
+    std::cout << "Output Raw Coords: " << std::boolalpha << output_raw_coords << "\n";
+    std::cout << "Output Removed Sequences: " << std::boolalpha << output_removed << "\n";
 
     std::string id;
     std::string seq;
