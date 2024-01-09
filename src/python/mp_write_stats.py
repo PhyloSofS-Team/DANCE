@@ -130,7 +130,7 @@ def get_mean(coordinates, gaps, coverage=False, normalize=False):
     
     return coordinates
 
-def load_tensor(filename):
+def load_coords(filename):
     with open(filename, 'rb') as f:
         numModels = np.frombuffer(f.read(8), dtype=np.int64)[0]
         numSeqs = np.frombuffer(f.read(8), dtype=np.int64)[0]
@@ -228,18 +228,18 @@ def compute_stats(idclu, directory, use_weights=False):
 
         ### rmsd operations
         mat = np.loadtxt(directory + idclu+'_rmsd.txt')
-        ref_rmsd_mat = mat[0][1:]
+        ref_rmsd_mat = mat[0][1:] 
         ref_rmsd_max, ref_rmsd_mean, ref_rmsd_std = f'{np.nanmax(ref_rmsd_mat):.3f}', f'{np.nanmean(ref_rmsd_mat):.3f}', f'{np.nanstd(ref_rmsd_mat):.3f}'
         mat= mat[np.triu_indices(len(mat),k=1)]
         rmsd_max, rmsd_mean, rmsd_std = f'{np.nanmax(mat):.3f}', f'{np.nanmean(mat):.3f}', f'{np.nanstd(mat):.3f}'
 
         ### coordinates loading
         try: #first we try to load the coordinates from the binary files containing only the CA atoms
-            coords = load_tensor(directory + idclu+'_raw_coords_ca.bin').T
+            coords = load_coords(directory + idclu+'_raw_coords_ca.bin').T
             mask = load_mask(directory + idclu+'_raw_coords_ca_mask.bin').T
 
         except: #if it fails, we load the coordinates from the binary files containing all the atoms
-            coords = load_tensor(directory + idclu+'_raw_coords.bin').T
+            coords = load_coords(directory + idclu+'_raw_coords.bin').T
             mask = load_mask(directory + idclu+'_raw_coords_mask.bin').T
             
 

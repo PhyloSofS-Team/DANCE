@@ -5,7 +5,7 @@ def main():
 
     identity = 0.8  
     coverage = 0.8 
-    bool_weight = True # Enable weighted structural alignment. Each position is weighted by it's coverage in the alignment.
+    bool_weight = False # Enable weighted structural alignment. Each position is weighted by it's coverage in the alignment.
     cif_dir = 'test/cifs/' # Directory containing CIF files
     mmseqs_dir = 'test/mmseqs_output/' # Directory to store the MMseqs2 output files
     aligned_dir = 'test/aligned/' # Directory to store the aligned multifasta files of the ensembles before model building
@@ -13,7 +13,7 @@ def main():
     mf_name = 'test/output.fa' # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
 
     cif_alignment_options = {
-        'c': False,  # Alignment and center of mass calculation is done only with the CA atoms
+        'c': True,  # Alignment and center of mass calculation is done only with the CA atoms
         'w': bool_weight,  # Enable weighted alignment
         'a': True,  # Enable the output of the multifasta file of the aligned sequences corresponding to the models
         'r': True,  # Enable output option RMSD matrix of the conformations corresponding to the models
