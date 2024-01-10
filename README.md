@@ -56,6 +56,7 @@ cmake CMakeLists.txt
 make
 ```
 6. **Run the Exemple:**
+
 You may want to run the pipeline on the small set of given cifs:
 ```
 python wrapper.py
