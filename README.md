@@ -1,6 +1,6 @@
-# DANCE: Pipeline for Protein Ensemble Creation
+# DANCE: Dimensionality Analysis for protein Conformational Exploration
 
-DANCE is designed to process a collection of protein 3D structures provided in Crystallographic Information File (CIF) format, producing protein or protein family-specific conformational ensembles in either CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these ensembles.
+DANCE is designed to process a collection of protein 3D structures provided in Crystallographic Information File (CIF) format, producing protein or protein family-specific conformational ensembles in either CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these ensembles. Additionally, the tool compiles these ensembles and extracts principal components to define the 'linear motion manifold', a fundamental representation of conformational dynamics. It also quantifies the intrinsic dimensionality of these manifolds, offering insights into the structural variations and flexibility of proteins.
 
 ## Description of the Algorithm
 
@@ -54,4 +54,9 @@ pip install -r requirements.txt
 ```
 cmake CMakeLists.txt
 make
+```
+6. **Run the Exemple:**
+You may want to run the pipeline on the small set of given cifs:
+```
+python wrapper.py
 ```
