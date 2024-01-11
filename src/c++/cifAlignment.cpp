@@ -49,6 +49,7 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
     std::vector<std::string>& seqs, 
     const std::vector<std::string>& names, 
     gemmi::Structure& tst,
+    int commonResAln,
     int len_seq, 
     bool use_weights, 
     bool Calpha
@@ -89,6 +90,7 @@ int main(int argc, char** argv) {
     float similarity_threshold = 0.1;
     int continentSize = 4;
     int isolationDistance = 15;
+    int commonResAln = 5;
     int nb_ref = 1;
     std::string referenceName = "";
     std::string outputDir = "./"; 
@@ -119,12 +121,13 @@ int main(int argc, char** argv) {
         {"referenceName", required_argument, 0, 'e'},
         {"outputDir", required_argument, 0, 'o'},
         {"outputRawCoords", no_argument, 0, 'b'},
+        {"commonResAln", required_argument, 0, 'z'},
         {"help", no_argument, 0, 'h'},
         {0, 0, 0, 0}
     };
     int opt;
     int option_index = 0;
-    while ((opt = getopt_long(argc, argv, "hi:d:cws:pfarun:x:y:e:o:b", long_options, &option_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "hi:d:cws:pfarun:x:y:e:o:bz:", long_options, &option_index)) != -1) {
         switch (opt) {
             case 'h':
                 std::cout << "Usage: " << argv[0] << " [options]\n";
@@ -143,22 +146,15 @@ int main(int argc, char** argv) {
                 std::cout << "--continentSize, -x <int>     Set the continent size (strictly superior to)(default: 4)\n";
                 std::cout << "--isolationDistance, -y <int> Set the isolation distance (superior or equal to)(default: 15)\n";
                 std::cout << "--referenceName, -e <name>    Force the choice of the reference with the given name\n";
-                std::cout << "--outputRawCoords, -b         Enable output raw coords file option\n";
+                std::cout << "--outputRawCoords, -b         Enable output raw coords binary file \n";
+                std::cout << "--commonResAln, -z <int>      Set the minimum number of common residues in the alignment (default: 5)\n";
                 std::cout << "--help, -h                    Display this help message\n";
                 exit(0);
                 break;
             case 'i':
-                if (optarg == nullptr) {
-                    std::cerr << "Error: -i option requires an argument (path to the aln file).\n";
-                    exit(1);
-                }
                 inAln = optarg;
                 break;
             case 'd':
-                if (optarg == nullptr) {
-                    std::cerr << "Error: -d option requires an argument (path to the cif directory).\n";
-                    exit(1);
-                }
                 cifDir = optarg;
                 break;
             case 'c':
@@ -195,17 +191,10 @@ int main(int argc, char** argv) {
                 isolationDistance = std::stoi(optarg);
                 break;
             case 'e':
-                if (optarg == nullptr) {
-                    std::cerr << "Error: -e option requires an argument (name of the reference sequence).\n";
-                    exit(1);
-                }
                 referenceName = optarg;
                 break;
             case 'o':
-                if (optarg == nullptr) {
-                    std::cerr << "Error: -o option requires an argument (output directory).\n";
-                    exit(1);
-                }
+
                 outputDir = optarg;
                 if (outputDir.back() != '/') {
                     outputDir += '/';
@@ -221,9 +210,11 @@ int main(int argc, char** argv) {
                     }
                 }
                 break;
-
             case 'b':
                 output_raw_coords = true;
+                break;
+            case 'z':
+                commonResAln = std::stoi(optarg);
                 break;
             default: 
                 std::cerr << "Invalid option.\n";
@@ -505,7 +496,7 @@ for (int i = 0; i < len_seq; ++i) {
 
 
     int maxarg = 0;
-    decltype(alignAndComputeRMSD(seqs, names, tst, len_seq, use_weights, Calpha)) rmsd_mat;
+    decltype(alignAndComputeRMSD(seqs, names, tst, commonResAln, len_seq, use_weights, Calpha)) rmsd_mat;
 
     std::set<int> selectedRefs;  // To keep track of already selected references
     std::vector<int> referenceOrder; // To store the order of references
@@ -636,7 +627,7 @@ for (int i = 0; i < len_seq; ++i) {
         
         std::cout<<"Centermass Computed"<<std::endl;
             
-        rmsd_mat = alignAndComputeRMSD(seqs, names, tst, len_seq, use_weights, Calpha); //structural aln is done here
+        rmsd_mat = alignAndComputeRMSD(seqs, names, tst, commonResAln, len_seq, use_weights, Calpha); //structural aln is done here
 
         
         if(ref==0){
@@ -648,7 +639,7 @@ for (int i = 0; i < len_seq; ++i) {
             while (sequencesRemoved && use_weights) { // if we remove a sequence it changes the coverage and we need to realign
                 iterationCountRem++;
                 std::cout<<"Realigning and removing duplicates, iteration "<<iterationCountRem<<std::endl;
-                rmsd_mat = alignAndComputeRMSD(seqs, names, tst, len_seq, use_weights, Calpha); //structural aln is done here
+                rmsd_mat = alignAndComputeRMSD(seqs, names, tst, commonResAln, len_seq, use_weights, Calpha); //structural aln is done here
                 sequencesRemoved = removeDuplicates(names, seqs, tst, rmsd_mat, similarity_threshold, output_removed, refName, len_seq, outputDir); //removes duplicates is done here
             }
 
@@ -925,6 +916,7 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
     std::vector<std::string>& seqs, 
     const std::vector<std::string>& names, 
     gemmi::Structure& tst,
+    int commonResAln,
     int len_seq, 
     bool use_weights, 
     bool Calpha
@@ -1007,7 +999,7 @@ std::vector< std::vector<double> > alignAndComputeRMSD(
 
             assert(posi.size() == posj.size());
             
-            if (common_residues > 4) { //we need at least 5 common residues to superpose, maybe make this an option
+            if (common_residues >= commonResAln) { 
                 
                 gemmi::SupResult result;
                 if (use_weights){

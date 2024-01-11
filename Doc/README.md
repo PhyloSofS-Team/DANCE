@@ -120,3 +120,5 @@ Where :
 - **-t** is the path of the TSV file containing the clusters.
 - **-d** is the output directory for the aligned multi-FASTA files.
 
+## CifAlignment
+
