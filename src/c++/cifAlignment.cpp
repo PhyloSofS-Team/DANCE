@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
     struct option long_options[] = {
         {"inputAln", required_argument, 0, 'i'},
         {"cifDir", required_argument, 0, 'd'},
-        {"centermass", no_argument, 0, 'c'},
+        {"calpha", no_argument, 0, 'c'},
         {"weighted", no_argument, 0, 'w'},
         {"similarity", required_argument, 0, 's'},
         {"outputPdb", no_argument, 0, 'p'},
@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
                 std::cout << "--inputAln, -i <path>         Path to the aln file\n";
                 std::cout << "--cifDir, -d <path>           Path to the cif directory\n";
                 std::cout << "--outputDir, -o <path>        Path to the output directory\n";
-                std::cout << "--centermass, -c              Centermass and alignment on Calpha only\n";
+                std::cout << "--calpha, -c                  Centermass and alignment on Calpha only\n";
                 std::cout << "--weighted, -w                Weight the aligment by the coverage of the amino acid in the MSA\n";
                 std::cout << "--similarity, -s <float>      Set RMSD similarity threshold for conformation removing (default: 0.1A)\n";
                 std::cout << "--outputPDB, -p               Enable output pdb file\n";
