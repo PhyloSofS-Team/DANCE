@@ -132,7 +132,7 @@ We select the reference conformation for superimposition based on the amino acid
 
 $score(s) = ∑_{i=1}^P\sigma(s_i, s^{\*}_i)$,
 
-where $P$ is the number of positions in the MSA and $\sigma(s_i, s^{\*}_i)$  is the substitution score between the amino acid $s_i$ at position i in sequence s and the consensus symbol $s^{\*}_i$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b}(\sigma(a,b))-1=-5$.
+where $P$ is the number of positions in the MSA and $\sigma(s_i, s^{\*}_i)$  is the substitution score between the amino acid $s_i$ at position i in sequence s and the consensus symbol $s^{\*}_{i}$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b}(\sigma(a,b))-1=-5$.
 
 The choice of reference can be forced by using the **--numReferences** parameter.
 
