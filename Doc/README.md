@@ -128,11 +128,14 @@ cifAlignment superimposes structures using a multi-FASTA file. It first chooses 
 
 #### Choice of the reference
 
-We select the reference conformation for superimposition based on the amino acid sequence that is most representative of the MSA. To do this, we first determine the consensus sequence $s^{\*}$ by identifying the most frequent symbol at each position. "X" symbols are considered equivalent to gaps. Therefore, each position is described by a 21-dimensional vector representing the frequencies of the 20 amino acid types and the gaps. In case of ambiguity, we prefer an amino acid over a gap, and a more frequent amino acid over a less frequent one. Then, we compute a score for each sequence $s$ in the MSA reflecting its similarity to $s^{\*}$, expressed as:
+WWe select the reference conformation for superimposition based on the amino acid sequence that is most representative of the MSA. To do this, we first determine the consensus sequence \(s^{\*}\) by identifying the most frequent symbol at each position. "X" symbols are considered equivalent to gaps. Therefore, each position is described by a 21-dimensional vector representing the frequencies of the 20 amino acid types and the gaps. In case of ambiguity, we prefer an amino acid over a gap, and a more frequent amino acid over a less frequent one. Then, we compute a score for each sequence \(s\) in the MSA reflecting its similarity to \(s^{\*}\), expressed as:
 
-$score(s) = ∑_{i=1}^P\sigma(s_{i}, s^{\*}_{i})$,
+$$
+score(s) = \sum_{i=1}^P \sigma(s_{i}, s^{\*}_{i}),
+$$
 
-where $P$ is the number of positions in the MSA and $\sigma(s_{i}, s^{\*}_{i})$  is the substitution score between the amino acid $s_{i}$ at position i in sequence s and the consensus symbol $s^{\*}_{i}$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b}(\sigma(a,b))-1=-5$.
+where \(P\) is the number of positions in the MSA and \(\sigma(s_{i}, s^{\*}_{i})\) is the substitution score between the amino acid \(s_{i}\) at position i in sequence s and the consensus symbol \(s^{\*}_{i}\) at the same position. We use the substitution matrix BLOSUM62, setting the gap score to \(\min_{a,b}(\sigma(a,b))-1 = -5\).
+
 
 The choice of reference can be forced by using the **--numReferences** parameter.
 
