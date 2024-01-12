@@ -51,7 +51,7 @@ Extracting sequences from CIF files:
 ```
 The multi-FASTA file will be named  **output.fa** by default. You can use the **-o** option to chose your path and name.
 
-#### Using a file list:
+#### Using a file list:
 
 You can pass a file list as the main argument:
 ```
@@ -130,7 +130,7 @@ cifAlignment superimposes structures using a multi-FASTA file. It first chooses 
 
 We select the reference conformation for superimposition based on the amino acid sequence that is most representative of the MSA. To do this, we first determine the consensus sequence $s*$ by identifying the most frequent symbol at each position. "X" symbols are considered equivalent to gaps. Therefore, each position is described by a 21-dimensional vector representing the frequencies of the 20 amino acid types and the gaps. In case of ambiguity, we prefer an amino acid over a gap, and a more frequent amino acid over a less frequent one. Then, we compute a score for each sequence $s$ in the MSA reflecting its similarity to $s*$, expressed as:
 
-$ score(s) = ∑_{i=1}^P σ(s_i, s*_i) $,
+$score(s) = ∑_{i=1}^P σ(s_i, s*_i)$,
 
 where $P$ is the number of positions in the MSA and $σ(s_i, s*_ i)$  is the substitution score between the amino acid $s_i$ at position i in sequence s and the consensus symbol $s*_i$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b} (σ(a,b)) - 1 = -5$.
 
