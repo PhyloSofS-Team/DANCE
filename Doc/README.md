@@ -132,11 +132,11 @@ We select the reference conformation for superimposition based on the amino acid
 
 $ score(s) = ∑_{i=1}^P σ(s_i, s*_i) $,
 
-where $P$ is the number of positions in the MSA and $σ(s_i, s*_ i)$  is the substitution score between the amino acid s_i at position i in sequence s and the consensus symbol $s*_i$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b} (σ(a,b)) - 1 = -5$.
+where $P$ is the number of positions in the MSA and $σ(s_i, s*_ i)$  is the substitution score between the amino acid $s_i$ at position i in sequence s and the consensus symbol $s*_i$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b} (σ(a,b)) - 1 = -5$.
 
 The choice of reference can be forced by using the **--numReferences** parameter.
 
-#### Removal of isolated residues
+#### Removal of isolated residues
 
 cifAlignment has the ability to remove residues that are too isolated in a sequence. The idea behind this function is that an isolated residue in a sequence is more likely to be misaligned. This feature uses two parameters, **--continentSize** and **--isolationDistance**.
 
@@ -169,7 +169,7 @@ If two structures have less than **--similarity** RMSD but have different sets o
 
 If two structures have less than **--commonResAln** residues in common, their RMSD is set to NAN. If a structure has **NAN RMSD with the reference**, it is **removed from the ensemble**.
 
-##### Weighted structural alignment
+##### Weighted structural alignment
 
 cifAlignment offers the possibility to weight the structural alignment by giving relative wheights to the common subset of residues between the two aligned structures. We derive those weights from the global coverage of the position in the MSA. To activate this option, use the **--weighted** option.
 
