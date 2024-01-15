@@ -286,7 +286,7 @@ Number of linear components necessary to explain the related % of variance.
 
 Percentage of variance explained by the first component.
 
-##### col_1st
+##### col_1st
 
 Collectivity of the first component.
 
@@ -294,6 +294,6 @@ Collectivity of the first component.
 
 Stats with the **ref** prefix are calculated in the same way as above, but alignment stats are calculated only on the subset of positions occupied by the reference, RMSD stats are calculated only relative to the reference, and linear mode stats are focused on the reference conformation rather than on an average conformation.
 
-##### norm suffix
+##### norm suffix
 
 Stats with the suffix "norm" are calculated using the 3D position correlation matrix rather than the covariance matrix. 
