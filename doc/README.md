@@ -173,14 +173,20 @@ If two structures have less than **--commonResAln** residues in common, their RM
 
 cifAlignment offers the possibility to weight the structural alignment by giving relative wheights to the common subset of residues between the two aligned structures. We derive those weights from the global coverage of the position in the MSA. To activate this option, use the **--weighted** option.
 
+##### Choice of several references
+
+If you require several references for structure alignment, you can use the **--n** parameter, specifying the number of references required. 
+The references are chosen so as to maximize the RMSD with the references already chosen. 
+
 ### Output
 
 cifAlignment saves the resulting conformational ensemble as a multi-model file in either PDB or CIF format. It's important to note that these models can display different amino acid sequences. Additionally, cifAlignment generates and outputs the corresponding multiple sequence alignments (MSA) in FASTA format, alongside a matrix of all-to-all pairwise RMSDs.
+Files have a prefix in the form **ID1_ID2**. ID1 is chosen at the end of clustering by MMseq2, and is the first ID in alphabetical order. It is unique for the ensemble in question. ID2 corresponds to the ID of the reference chosen for alignment; it is possible to have several references for the same ensemble.
 
 #### PDB file
 
 The output is a PDB file containing multiple models. The header of the file contains information about the number of models and the length of the alignment. It also contains a list of the ids of the different models of the PDB. Please note that this PDB file is non-standard because the amino acids present in the models may differ.
-We use the residue sequence number at columns 23 to 26 of the PDB file in order to represent the position in the alignment of each residue.
+We use the residue sequence number at columns 23 to 26 of the PDB file in order to represent the position in the alignment of each residue. Thus, the gaps in the sequence alignment are implicitly represented by the residue sequence numbers that are not present in the file.
 ```
 $ head test/models/1AKEA_1AKEA_mm.pdb 
 NUMMDL    35                                                                    
@@ -195,3 +201,99 @@ SEQLEN    215
 8 : 3HPRB
 ...
 ```
+
+#### Raw coordinates and mask
+
+cifAlignment lets you write the coordinates and positions of gaps as binary files without information on the amino acids making up the sequences, using the **--ouputRawCoords** option.
+You may want to read these files from python using the following functions:
+```
+def load_coords(filename):
+    with open(filename, 'rb') as f:
+        numModels = np.frombuffer(f.read(8), dtype=np.int64)[0]
+        numSeqs = np.frombuffer(f.read(8), dtype=np.int64)[0]
+        numCoords = np.frombuffer(f.read(8), dtype=np.int64)[0]
+        data_shape = (numModels, numSeqs, numCoords)
+        data = np.frombuffer(f.read(), dtype=np.float64)
+        return data.reshape(data_shape)  # ouput has shape (number of conformations, number of atoms, 3)
+    
+def load_mask(filename):
+    with open(filename, 'rb') as f:
+        numModels = np.frombuffer(f.read(8), dtype=np.int64)[0]
+        numSeqs = np.frombuffer(f.read(8), dtype=np.int64)[0]
+        tensor = np.frombuffer(f.read(numModels * numSeqs), dtype=np.uint8).astype(bool).reshape((numModels, numSeqs))
+        return tensor # ouput has shape (number of conformations, number of atoms)
+```
+
+### CifAlignment launcher
+
+In the same way as cifConverter, cifAlignment can be run in parallel using the mp_cifAlignment.py script.
+
+## Extraction of linear motions using mp_write_stats.py
+
+mp_write_stats.py produces a file containing statistics for all detected ensembles. For an ensemble to be taken into account, it is necessary to have activated the output of the alignment, binary coordinates and RMSD matrix in cifAlignment (-a,-b,-r options). 
+
+### Description of the columns of the stat file
+
+##### name_file
+
+ID of the file. Unique for one ensemble.
+
+##### name_ref
+
+Reference for the structural alignment.
+
+##### nb_members
+
+Number of conformations in the model.
+
+##### aln_len
+
+Lenght of the alignment, in number of positions.
+
+##### ref_len
+
+Lenght of the reference, in number of existing positions ('X' or '-' are excluded)
+
+##### coverage 
+
+Proportion of positions with at least 80% coverage (a position is considered covered if it does not contain 'X' or '-')
+
+##### percent_id
+
+Percentage identity of the MSA
+
+##### global_quality
+
+Measure of the quality of the alignment (1:Max)
+
+##### rmsd_max
+
+Maximum RMSD between two conformations of the ensemble.
+
+##### rmsd_mean
+
+Mean RMSD of the conformations of the ensemble.
+
+##### rmsd_std
+
+Standard deviation of the conformations of the ensemble.
+
+##### 50%,80%,85%,90%,95%,99%
+
+Number of linear components necessary to explain the related % of variance.
+
+##### %var_1st
+
+Percentage of variance explained by the first component.
+
+##### col_1st
+
+Collectivity of the first component.
+
+##### ref prefix
+
+Stats with the **ref** prefix are calculated in the same way as above, but alignment stats are calculated only on the subset of positions occupied by the reference, RMSD stats are calculated only relative to the reference, and linear mode stats are focused on the reference conformation rather than on an average conformation.
+
+##### norm suffix
+
+Stats with the suffix "norm" are calculated using the 3D position correlation matrix rather than the covariance matrix. 

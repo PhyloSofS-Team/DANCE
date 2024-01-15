@@ -165,7 +165,7 @@ def combi2(x):
 # (i.e. a MSA with only matches and of the lenght equal to the max number of aa, computed over the sequences in the MSA)
 # usage cases:
 # 1) % of identity can be retrieved by setting the mismatch penalty to zero
-# and disregarding the gaps and Xs:  computeSumOfPairs(readAli("6CCHB"), mismatch=0,  gapChar=c("-","x"))
+# and disregarding the gaps and Xs:  computeSumOfPairs(readAli("6CCHB"), mismatch=0)
 # 2) global quality of the MSA can be assessed by setting the gap penalty equal to the mismatch 
 # 3) quality of the gaps can be assessed and compared by setting the gap penalty to some value
 
