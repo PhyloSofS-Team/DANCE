@@ -666,8 +666,18 @@ for (int i = 0; i < len_seq; ++i) {
         }
         
         if (output_cif){
-            std::ofstream os(outputDir+refName+"_"+names[0]+".cif");
-            gemmi::cif::write_cif_to_stream(os, gemmi::make_mmcif_document(tst));
+            //make a copy of tst but with the models named using numbers instead of names
+            //this is done to remove vizualisation problems in pymol
+            //use the aln file to get the names
+            gemmi::Structure tst2;
+            tst2.models.reserve(tst.models.size());
+            for (size_t iSeq=0 ; iSeq< names.size(); ++iSeq) {
+                gemmi::Model tmo(std::to_string(iSeq+1));
+                tmo.chains.push_back(tst.models[iSeq].chains[0]);
+                tst2.models.push_back(tmo);
+            }
+            std::ofstream os(outputDir+refName+"_"+names[0]+"_mm.cif");
+            gemmi::cif::write_cif_to_stream(os, gemmi::make_mmcif_document(tst2));
         }
         
         if (output_rmsd){

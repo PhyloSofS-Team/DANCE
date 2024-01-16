@@ -13,13 +13,15 @@ def main():
     mf_name = 'test/output.fa' # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
 
     cif_alignment_options = {
-        'c': True,  # Alignment and center of mass calculation is done only with the CA atoms
+        'c': False,  # Alignment and center of mass calculation is done only with the CA atoms
         'w': bool_weight,  # Enable weighted alignment
         'a': True,  # Enable the output of the multifasta file of the aligned sequences corresponding to the models
         'r': True,  # Enable output option RMSD matrix of the conformations corresponding to the models
         'b': True,  # Enable output option raw coordinates in binary format of the conformations corresponding to the models
         'u': True,  # Enable output option for removed sequence information
         'p': True,  # Enable output of the model in a PDB file
+        'f': False,  # Enable output of the model in a CIF file
+        'n': 1,  # Number of models to build
         'd': cif_dir,
         'o': models_dir
     }
