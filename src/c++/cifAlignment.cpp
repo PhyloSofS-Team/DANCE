@@ -676,7 +676,13 @@ for (int i = 0; i < len_seq; ++i) {
                 tmo.chains.push_back(tst.models[iSeq].chains[0]);
                 tst2.models.push_back(tmo);
             }
-            std::ofstream os(outputDir+refName+"_"+names[0]+"_mm.cif");
+            std::ofstream os(outputDir + refName + "_" + names[0] + "_mm.cif");
+
+            // Write the comments
+            os << "# SEQLEN " << len_seq << "\n";
+            for (size_t iSeq = 0; iSeq < names.size(); ++iSeq) {
+                os << "# " << std::to_string(iSeq+1) << " : " << names[iSeq] << "\n";
+            }
             gemmi::cif::write_cif_to_stream(os, gemmi::make_mmcif_document(tst2));
         }
         
