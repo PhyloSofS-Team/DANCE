@@ -20,8 +20,8 @@ def main():
         'b': True,  # Enable output option raw coordinates in binary format of the conformations corresponding to the models
         'u': True,  # Enable output option for removed sequence information
         'p': True,  # Enable output of the model in a PDB file
-        'f': False,  # Enable output of the model in a CIF file
-        'n': 1,  # Number of models to build
+        'f': True,  # Enable output of the model in a CIF file
+        'n': 2,  # Number of models to build
         'd': cif_dir,
         'o': models_dir
     }

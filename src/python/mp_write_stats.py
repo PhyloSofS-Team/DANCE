@@ -397,7 +397,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Compute statistics.")
     parser.add_argument("--use_weights", action="store_true", help="Use this option to enable weights.")
-    parser.add_argument("--directory", type=str, default=".", help="Directory for input and output files.")
+    parser.add_argument("--directory", type=str, default="./", help="Directory for input and output files.")
     args = parser.parse_args()
 
     main(args.use_weights, args.directory)
