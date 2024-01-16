@@ -88,7 +88,7 @@ int main(int argc, char** argv) {
     std::string inAln;
     std::string cifDir;
     float similarity_threshold = 0.1;
-    int continentSize = 4;
+    int continentSize = 5;
     int isolationDistance = 15;
     int commonResAln = 5;
     int nb_ref = 1;
@@ -131,23 +131,25 @@ int main(int argc, char** argv) {
         switch (opt) {
             case 'h':
                 std::cout << "Usage: " << argv[0] << " [options]\n";
+                std::cout << "Mandatory Parameters:\n";
                 std::cout << "--inputAln, -i <path>         Path to the aln file\n";
                 std::cout << "--cifDir, -d <path>           Path to the cif directory\n";
                 std::cout << "--outputDir, -o <path>        Path to the output directory\n";
+                std::cout << "Optional Parameters:\n";
                 std::cout << "--calpha, -c                  Centermass and alignment on Calpha only\n";
                 std::cout << "--weighted, -w                Weight the aligment by the coverage of the amino acid in the MSA\n";
                 std::cout << "--similarity, -s <float>      Set RMSD similarity threshold for conformation removing (default: 0.1A)\n";
+                std::cout << "--continentSize, -x <int>     Set the minimum length for a contiguous stretch of residues that cannot be removed (default: 5).\n";
+                std::cout << "--isolationDistance, -y <int> Set the cutoff distance for removing residues far from any contiguous, non-removable stretch of residues (default: 15).\n";
+                std::cout << "--commonResAln, -z <int>      Set the minimum number of common residues in the alignment (default: 5)\n";
+                std::cout << "--numReferences, -n <int>     Set the number of references (default: 1)\n";
+                std::cout << "--referenceName, -e <name>    Force the choice of the reference with the given name\n";
                 std::cout << "--outputPDB, -p               Enable output pdb file\n";
                 std::cout << "--outputCif, -f               Enable output cif file\n";
+                std::cout << "--outputRawCoords, -b         Enable output raw coords binary file \n";
                 std::cout << "--outputAln, -a               Enable output aln file\n";
                 std::cout << "--outputRmsd, -r              Enable output of RMSD matrix\n";
                 std::cout << "--outputRemoved, -u           Enable output of removed sequences file information\n";
-                std::cout << "--numReferences, -n <int>     Set the number of references (default: 1)\n";
-                std::cout << "--continentSize, -x <int>     Set the continent size (strictly superior to)(default: 4)\n";
-                std::cout << "--isolationDistance, -y <int> Set the isolation distance (superior or equal to)(default: 15)\n";
-                std::cout << "--referenceName, -e <name>    Force the choice of the reference with the given name\n";
-                std::cout << "--outputRawCoords, -b         Enable output raw coords binary file \n";
-                std::cout << "--commonResAln, -z <int>      Set the minimum number of common residues in the alignment (default: 5)\n";
                 std::cout << "--help, -h                    Display this help message\n";
                 exit(0);
                 break;
@@ -787,12 +789,12 @@ std::vector<GapSection> removeIsolatedResidues(std::vector<std::string>& seqs, i
         for (const auto& section : sections) {
             int start = section.first;
             int end = section.second;
-            bool isContinent = end - start > continentSize;
+            bool isContinent = end - start >= continentSize;
             bool isIsolated = true;
 
             if (!isContinent) {
                 for (const auto& continent : sections) {
-                    if (continent.second - continent.first > continentSize) {
+                    if (continent.second - continent.first >= continentSize) {
                         int distanceStart = std::abs(start - continent.first);
                         int distanceEnd = std::abs(end - continent.second);
                         int distanceToContinentStart = std::abs(start - continent.second);

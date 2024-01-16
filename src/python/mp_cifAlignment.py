@@ -38,7 +38,7 @@ def launchCifAlignment(mf, options):
     cmd = [cif_alignment_path, '-i', mf]
     for key, value in options.items():
         if value:
-            if key in ['s', 'n', 'x', 'y', 'd', 'o']:
+            if key in ['s', 'n', 'x', 'y', 'd', 'o', 'z']:
                 cmd.extend(['-' + key, str(value)])
             else:
                 cmd.append('-' + key)
@@ -95,6 +95,7 @@ def main():
     parser.add_argument("-n", "--numReferences", type=int, help="Set the number of references.")
     parser.add_argument("-x", "--continentSize", type=int, help="Set the continent size (strictly superior to).")
     parser.add_argument("-y", "--isolationDistance", type=int, help="Set the isolation distance (superior or equal to).")
+    parser.add_argument("-z", "--commonResAln", type=int, help="Set the minimum number of common residues for alignment.")
     parser.add_argument("-l", "--listfile", help="Path to the file containing a list of .fa files.")
     args = parser.parse_args()
 
@@ -111,6 +112,7 @@ def main():
         'n': args.numReferences,
         'x': args.continentSize, 
         'y': args.isolationDistance,
+        'z': args.commonResAln,
         'd': args.cifDir,  
         'o': args.outputDir  
     }
