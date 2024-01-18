@@ -25,7 +25,7 @@ CifConverter is a very simple tool written in C++ that extracts the amino acid s
 
 - The code implements a filtering step where sequences comprising fewer than 5 non-'X' residues are excluded from further analysis.
 
-### Standalone usage exemple:
+### Standalone usage example:
 #### In the terminal
 ```
 $ bin/cifConverter test/cifs/1ake_final.cif 
@@ -96,7 +96,7 @@ The coverage is bidirectional by default.
 
 It also rewrites TSV file containing the ids of the created clusters to a one cluster per line file. 
 
-#### Exemple usage:
+#### Example usage:
 
 ```
 python src/python/mmseqs.py -i 0.8 -c 0.8 -m test/output.fa -o test/mmseq_dir/
@@ -110,7 +110,7 @@ Where:
 
 This script first creates unaligned multi-FASTA file then perform multiple sequence alignment within each cluster using [MAFFT](https://mafft.cbrc.jp/alignment/software/), launched in parallel.
 
-#### Exemple usage:
+#### Example usage:
 
 ```
 python src/python/mp_align.py -m test/output.fa -t test/mmseqs_output/clusterDB_80_80.tsv -d test/aligned_seq/
@@ -156,7 +156,7 @@ The structural alignment of the conformations to the reference is done by minimi
 
 ##### Calpha or whole backbone
 
-The alignment can be done by using only the alpha carbon with the option **--calpha**, or with all the backbone atoms without this option.
+The alignment and centering can be done by using only the alpha carbon with the option **--calpha**, or with all the backbone atoms without this option.
 
 ##### Removal of redundant structures
 
@@ -232,7 +232,7 @@ In the same way as cifConverter, cifAlignment can be run in parallel using the m
 
 mp_write_stats.py produces a file containing statistics for all detected ensembles. For an ensemble to be taken into account, it is necessary to have activated the output of the alignment, binary coordinates and RMSD matrix in cifAlignment (-a,-b,-r options). 
 
-### Description of the columns of the stat file
+### Columns of the stat file
 
 ##### name_file
 
@@ -296,4 +296,5 @@ Stats with the **ref** prefix are calculated in the same way as above, but align
 
 ##### norm suffix
 
-Stats with the suffix "norm" are calculated using the 3D position correlation matrix rather than the covariance matrix. 
+Stats with the suffix **norm** are calculated using the 3D position correlation matrix rather than the covariance matrix. 
+
