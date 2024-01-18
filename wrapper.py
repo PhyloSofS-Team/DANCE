@@ -11,7 +11,7 @@ def main():
     aligned_dir = 'test/aligned/' # Directory to store the aligned multifasta files of the ensembles before model building
     models_dir = 'test/models/' # Directory to store the 3D models 
     mf_name = 'test/output.fa' # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
-
+    num_workers = None # Number of worker processes (default: number of CPU cores)
     cif_alignment_options = {
         'c': False,  # Alignment and center of mass calculation is done only with the CA atoms
         'w': bool_weight,  # Enable weighted alignment
@@ -30,19 +30,19 @@ def main():
     cluster_db_filename = f"clusterDB_{cluster_db_file_suffix}.tsv"
 
     # Extract sequences from CIF files
-    mp_cifConverter.process_files(cif_dir, mf_name)
+    mp_cifConverter.process_files(input_path=cif_dir, output_file=mf_name, num_workers=num_workers)
 
     # Create ensembles of sequences with MMseqs2
-    mmseqs.process_mmseqs(identity, coverage, mf_name, mmseqs_dir)
+    mmseqs.process_mmseqs(id=identity, cov=coverage, multifasta=mf_name, output_dir=mmseqs_dir, num_workers=num_workers)
   
     # Align sequences of the ensembles with Mafft
-    mp_align.process_files(mf_name, f'{mmseqs_dir}{cluster_db_filename}', aligned_dir)
+    mp_align.process_files(multifasta=mf_name, tsv=f'{mmseqs_dir}{cluster_db_filename}', name_dr=aligned_dir, num_workers=num_workers)
 
     # Run CIF alignment with specified options to create the 3d models
-    mp_cifAlignment.run_cif_alignment(aligned_dir, cif_alignment_options)
+    mp_cifAlignment.run_cif_alignment(mfdir=aligned_dir, options=cif_alignment_options, num_workers=num_workers)
 
     # Compute statistics of the models
-    mp_write_stats.main(use_weights=bool_weight, directory=models_dir) # to write the stats, the options a, r and b must be enabled in cif_alignment_options
+    mp_write_stats.main(use_weights=bool_weight, directory=models_dir, num_workers=num_workers) # to write the stats, the options a, r and b must be enabled in cif_alignment_options
 
 if __name__ == '__main__':
     main()

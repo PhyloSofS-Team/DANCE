@@ -59,32 +59,37 @@ def create_unaligned_fasta_files(mf, tsv, name_dr):
     except Exception as e:
         print(f"Error occurred: {e}")
 
-def launch_mafft_on_clusters(lclusters_unaligned, name_dr):
+def launch_mafft_on_clusters(lclusters_unaligned, name_dr, num_workers=None):
+    if num_workers is None:
+        num_workers = multiprocessing.cpu_count()  
+
     os.makedirs(name_dr, exist_ok=True)
     lclusters_aligned = [cluster.replace('_unaligned', '') for cluster in lclusters_unaligned]
 
     print('Launching Mafft on multifasta files:')
 
     try:
-        with multiprocessing.Pool() as pool:
+        with multiprocessing.Pool(processes=num_workers) as pool:
             list(tqdm.tqdm(pool.imap_unordered(launchMafft, zip(lclusters_unaligned, lclusters_aligned)), total=len(lclusters_aligned)))
     except Exception as e:
         sys.stderr.write(f"Error in launch_mafft_on_clusters: {e}\n")
 
 
-def process_files(mf, tsv, name_dr):
-    lclusters_unaligned = create_unaligned_fasta_files(mf, tsv, name_dr)
-    launch_mafft_on_clusters(lclusters_unaligned, name_dr)
+def process_files(multifasta, tsv, name_dr, num_workers=None):
+    lclusters_unaligned = create_unaligned_fasta_files(multifasta, tsv, name_dr)
+    launch_mafft_on_clusters(lclusters_unaligned, name_dr, num_workers)
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run MAFFT on multiple FASTA files.")
     parser.add_argument('-m', '--multifasta', required=True, help="Path to the multifasta file")
     parser.add_argument('-t', '--tsv', required=True, help="Path to the TSV file containing clusters information")
     parser.add_argument('-d', '--output_dir', required=True, help="Output directory for aligned FASTA files")
-    
+    parser.add_argument('-w', '--workers', type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
+
     args = parser.parse_args()
 
-    process_files(args.multifasta, args.tsv, args.output_dir)
+    process_files(args.multifasta, args.tsv, args.output_dir, args.workers)
 
 if __name__ == "__main__":
     main()

@@ -14,7 +14,6 @@ import numpy as np
 from collections import Counter
 from Bio import AlignIO
 import tqdm
-import time
 import os
 
 def to_d3(mat):
@@ -363,8 +362,9 @@ def compute_stats(idclu, directory, use_weights=False):
         print(f"Error processing {idclu}")
         return f"ERROR_{idclu}"
     
-def main(use_weights, directory):
-    start_time = time.time()
+def main(use_weights, directory, num_workers=None):
+    if num_workers is None:
+        num_workers = multiprocessing.cpu_count()
 
     compute_stats_configured = partial(compute_stats, directory=directory, use_weights=use_weights)
 
@@ -373,7 +373,7 @@ def main(use_weights, directory):
     liste_id = [os.path.basename(i).rsplit('_aln.fa', 1)[0] for i in liste_id]
 
     print('Computing statistics:')
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.Pool(processes=num_workers) as pool:
         results = list(tqdm.tqdm(pool.imap_unordered(compute_stats_configured, liste_id), total=len(liste_id)))
 
     output_filename = 'stats_weighted.csv' if use_weights else 'stats.csv'
@@ -389,15 +389,13 @@ def main(use_weights, directory):
                 error_idclu = result_line.split("_")[1]
                 print(f"Error processing {error_idclu}")
 
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    #print(f"Finished in {elapsed_time:.2f} seconds")
+
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description="Compute statistics.")
     parser.add_argument("--use_weights", action="store_true", help="Use this option to enable weights.")
     parser.add_argument("--directory", type=str, default="./", help="Directory for input and output files.")
+    parser.add_argument("-w", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
     args = parser.parse_args()
 
-    main(args.use_weights, args.directory)
+    main(args.use_weights, args.directory, args.workers)

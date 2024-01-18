@@ -44,7 +44,8 @@ def rewrite_tsv(input_name: str, output_name: str):
         for line in newfile:
             f.write(' '.join(line) + '\n')
 
-def process_mmseqs(id: str, cov: str, multifasta: str, output_dir: str):
+
+def process_mmseqs(id: str, cov: str, multifasta: str, output_dir: str, num_workers: int = None):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -60,24 +61,25 @@ def process_mmseqs(id: str, cov: str, multifasta: str, output_dir: str):
     cluster_db = os.path.join(db_dir, f"clusterDB_{idcov}")
     tsv_file = os.path.join(db_dir, f"clusterDB_{idcov}.tsv")
 
+    thread_option = f"--threads {num_workers}" if num_workers is not None else ""
+
     run_command(f"{mmseqs_path} createdb {multifasta} {db_file}")
-    run_command(f"{mmseqs_path} cluster {db_file} {cluster_db} {db_dir}/tmp --cov-mode 0 -c {cov} --min-seq-id {id}")
+    run_command(f"{mmseqs_path} cluster {db_file} {cluster_db} {db_dir}/tmp --cov-mode 0 -c {cov} --min-seq-id {id} {thread_option}")
     run_command(f"{mmseqs_path} createtsv {db_file} {db_file} {cluster_db} {tsv_file}")
 
     final_tsv = os.path.join(output_dir, f"clusterDB_{idcov}.tsv")
     rewrite_tsv(tsv_file, final_tsv)
 
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Process FASTA files with Mafft.")
+    parser = argparse.ArgumentParser(description="Process FASTA files with mmseqs.")
     parser.add_argument('-i', '--id', required=True, help="Identity threshold")
     parser.add_argument('-c', '--cov', required=True, help="Coverage threshold")
     parser.add_argument('-m', '--multifasta', required=True, help="Path to the multifasta file")
     parser.add_argument('-o', '--output_dir', required=True, help="Output directory for mmseqs files")
+    parser.add_argument('-w', '--workers', type=int, help="Number of worker threads for mmseqs (optional)")
     args = parser.parse_args()
 
-    process_mmseqs(args.id, args.cov, args.multifasta, args.output_dir)
+    process_mmseqs(args.id, args.cov, args.multifasta, args.output_dir, args.workers)
 
 if __name__ == "__main__":
     main()

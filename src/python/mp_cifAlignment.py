@@ -56,18 +56,18 @@ def launchCifAlignment(mf, options):
 
 
 
-def process_cif_alignment(mf_files, options):
+
+def process_cif_alignment(mf_files, options, num_workers=None):
+    if num_workers is None:
+        num_workers = multiprocessing.cpu_count()  
+
     print('Creating aligned multistructure files:')
-    t1 = time.time()
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.Pool(processes=num_workers) as pool:
         for _ in tqdm.tqdm(pool.imap_unordered(launchCifAlignmentWrapper, [(mf, options) for mf in mf_files]), total=len(mf_files)):
             pass
-    t2 = time.time()
-
-    
 
 
-def run_cif_alignment(mfdir, options, listfile=None):
+def run_cif_alignment(mfdir, options, listfile=None, num_workers=None):
     if listfile:
         with open(listfile, 'r') as f:
             mf_files = [line.strip() for line in f.readlines()]
@@ -76,7 +76,7 @@ def run_cif_alignment(mfdir, options, listfile=None):
         unaligned_fa_files = set(glob.glob(os.path.join(mfdir, '*_unaligned.fa')))
         mf_files = list(all_fa_files - unaligned_fa_files)
 
-    process_cif_alignment(mf_files, options)
+    process_cif_alignment(mf_files, options, num_workers)
 
 def main():
     parser = argparse.ArgumentParser(description="Run cifAlignment with specified options.")
@@ -96,7 +96,9 @@ def main():
     parser.add_argument("-x", "--continentSize", type=int, help="Set the continent size (strictly superior to).")
     parser.add_argument("-y", "--isolationDistance", type=int, help="Set the isolation distance (superior or equal to).")
     parser.add_argument("-z", "--commonResAln", type=int, help="Set the minimum number of common residues for alignment.")
+    parser.add_argument("-w", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
     parser.add_argument("-l", "--listfile", help="Path to the file containing a list of .fa files.")
+    
     args = parser.parse_args()
 
     options = {
@@ -120,7 +122,7 @@ def main():
     if not args.alnDir and not args.listfile:
         raise ValueError("Either --alnDir or --listfile must be provided, use -h for help.")
     else:
-        run_cif_alignment(args.alnDir, options, args.listfile)
+        run_cif_alignment(args.alnDir, options, args.listfile, args.workers)
 
 
 if __name__ == "__main__":
