@@ -2,7 +2,7 @@
 
 ## CifConverter
 
-CifConverter is a very simple tool written in C++ that extracts the amino acid sequence of a cif file in a multi-FASTA format.
+CifConverter is a simple tool written in C++ that extracts the amino acid sequence of a CIF file in a multi-FASTA format.
 
 #### Extraction of amino acid sequences:
 
@@ -134,17 +134,17 @@ $$score(s) = ∑_{i=1}^P\sigma(s_i, s^{\*}_{i})$$
 
 where $P$ is the number of positions in the MSA and $\sigma(s_{i}, s_{i}^{\*})$  is the substitution score between the amino acid $s_{i}$ at position i in sequence s and the consensus symbol $s_{i}^{\*}$ at the same position. We use the substitution matrix BLOSUM62, setting the gap score to $min_{a,b}(\sigma(a,b))-1=-5$.
 
-The choice of reference can be forced by using the **--numReferences** parameter.
+The choice of reference can be forced by using the **-e** **--referenceName** parameter.
 
 #### Removal of isolated residues
 
-cifAlignment has the ability to remove residues that are too isolated in a sequence. The idea behind this function is that an isolated residue in a sequence is more likely to be misaligned. This feature uses two parameters, **--continentSize** and **--isolationDistance**.
+cifAlignment has the ability to remove residues that are too isolated in a sequence. The idea behind this function is that an isolated residue in a sequence is more likely to be misaligned. This feature uses two parameters, **-x** **--continentSize** and **-y** **--isolationDistance**.
 
-**--continentSize** defines the size from which a contiguous section of residue, that is, a part of the sequence containing neither gap nor "X", is considered as a continent and can never be removed from a sequence. Residue sections smaller than **--continentSize** are considered as islands.
+**-x** **--continentSize** defines the size from which a contiguous section of residue, that is, a part of the sequence containing neither gap nor "X", is considered as a continent and can never be removed from a sequence. Residue sections smaller than **-x** **--continentSize** are considered as islands.
 
-**--isolationDistance** defines the distance from which an island is removed from the sequence. This occurs when the island in question is located more than **--isolationDistance** positions from the nearest continent.
+**-y** **--isolationDistance** defines the distance from which an island is removed from the sequence. This occurs when the island in question is located more than **-y** **--isolationDistance** positions from the nearest continent.
 
-If one wants to ensure that no residues are removed from the sequence, then either of the two parameters **--continentSize** or **--isolationDistance** must be set to 0.
+If one wants to ensure that no residues are removed from the sequence, then either of the two parameters **-x** **--continentSize** or **-y** **--isolationDistance** must be set to 0.
 
 #### Removal of empty columns 
 
@@ -152,30 +152,30 @@ If a column contains only gaps or 'X's, it is removed from the alignment.
 
 #### Structural alignment on the reference
 
-The structural alignment of the conformations to the reference is done by minimizing the Root Mean Squared Deviation (RMSD) between the common set of occupied positions in the sequence alignment between the reference and the considered conformation
+The structural alignment of the conformations to the reference is done by minimizing the Root Mean Squared Deviation (RMSD) between the common set of occupied positions in the sequence alignment between the reference and the considered conformation.
 
 ##### Calpha or whole backbone
 
-The alignment and centering can be done by using only the alpha carbon with the option **--calpha**, or with all the backbone atoms without this option.
+The alignment and centering can be done by using only the alpha carbon with the option **-c** **--calpha**, or with all the backbone atoms without this option.
 
 ##### Removal of redundant structures
 
-This step also computes the values of the RMSD matrix, allowing removing redundant structures by using a RMSD threshold defined by **--similarity**.
-If two structures have less than **--similarity** RMSD, and identical amino acid sequence, we **remove the last in the alphabetical order**.
-If two structures have less than **--similarity** RMSD but one is subset of the other, we **remove the shortest conformation**.
-If two structures have less than **--similarity** RMSD but have different sets of residues, we **keep them both**.
+This step also computes the values of the RMSD matrix, allowing removing redundant structures by using a RMSD threshold defined by **-s** **--similarity**.
+If two structures have less than **-s** **--similarity** RMSD, and identical amino acid sequence, we **remove the last in the alphabetical order**.
+If two structures have less than **-s** **--similarity** RMSD but one is subset of the other, we **remove the shortest conformation**.
+If two structures have less than **-s** **--similarity** RMSD but have different sets of residues, we **keep them both**.
 
 ##### Minimal substet in common for structural alignment
 
-If two structures have less than **--commonResAln** residues in common, their RMSD is set to NAN. If a structure has **NAN RMSD with the reference**, it is **removed from the ensemble**.
+If two structures have less than ***-z** **--commonResAln** residues in common, their RMSD is set to NAN. If a structure has **NAN RMSD with the reference**, it is **removed from the ensemble**.
 
 ##### Weighted structural alignment
 
-cifAlignment offers the possibility to weight the structural alignment by giving relative wheights to the common subset of residues between the two aligned structures. We derive those weights from the global coverage of the position in the MSA. To activate this option, use the **--weighted** option.
+cifAlignment offers the possibility to weight the structural alignment by giving relative wheights to the common subset of residues between the two aligned structures. We derive those weights from the global coverage of the position in the MSA. To activate this option, use the **-w** **--weighted** option.
 
 ##### Choice of several references
 
-If you require several references for structure alignment, you can use the **--n** parameter, specifying the number of references required. 
+If you require several references for structure alignment, you can use the **--n** **--numReferences** parameter, specifying the number of references required. 
 The references are chosen so as to maximize the RMSD with the references already chosen. 
 
 ### Output
@@ -185,7 +185,8 @@ Files have a prefix in the form **ID1_ID2**. ID1 is chosen at the end of cluster
 
 #### PDB file
 
-The output is a PDB file containing multiple models. The header of the file contains information about the number of models and the length of the alignment. It also contains a list of the ids of the different models of the PDB. Please note that this PDB file is non-standard because the amino acids present in the models may differ.
+Use the **-p** **--outputPDB** to output the PDB file.
+The output is a PDB file containing multiple models. The header of the file contains information about the number of models and the length of the alignment. It also contains a list of the ids of the different models present in the PDB file. Please note that this PDB file is non-standard because the amino acids present in the models may differ.
 We use the residue sequence number at columns 23 to 26 of the PDB file in order to represent the position in the alignment of each residue. Thus, the gaps in the sequence alignment are implicitly represented by the residue sequence numbers that are not present in the file.
 ```
 $ head test/models/1AKEA_1AKEA_mm.pdb 
@@ -202,9 +203,25 @@ SEQLEN    215
 ...
 ```
 
+#### Cif file
+
+Use the **-f** **--outputCif** option to output the CIF file.
+The CIF file contains multiple models. The beginning of the file includes the length of the alignment and a list of the model IDs present in the CIF file. We use **_atom_site.auth_seq_id** to describe the position of each residue in the considered model within the Multiple Sequence Alignment (MSA).
+
+#### Alignment 
+
+Use the **-a** **--outputAln** option to output the alignment (FASTA) file.
+The alignment output may differ from the one provided as input due to the removal of residues or sequences. 
+
+#### RMSD matrix
+
+Use the **-r** **--outputRmsd** to output the RMSD matrix. 
+The RMSD matrix give the computed RMSD between each conformation of the model. If two conformations share less than **-z** **--commonResAln** occupied position in the sequence alignment, they will have NAN value in the RMSD matrix.
+Otherwise the RMSD between two conformations $\mathbf{a}$ and $\mathbf{b}$ is defined by $$\text{RMSD} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} w_i||\mathbf{a}_i - \mathbf{b}_i||^2}$$ where $i$ iterates over the common positions in the sequence alignment of the two conformations. If the option **-w** **--weighted** is activated, $w_i$ value is the coverage of the position of the sequence alignment and the constraint $N = \sum_{i}w_i$ is imposed. Otherwise $w_i = 1$ and $N$ is equal to the number of common residues shared by the two conformations.  
+
 #### Raw coordinates and mask
 
-cifAlignment lets you write the coordinates and positions of gaps as binary files without information on the amino acids making up the sequences, using the **--ouputRawCoords** option.
+cifAlignment lets you write the coordinates and positions of gaps as binary files without information on the amino acids making up the sequences, using the **-b** **--ouputRawCoords** option.
 You may want to read these files from python using the following functions:
 ```
 def load_coords(filename):
@@ -223,6 +240,9 @@ def load_mask(filename):
         tensor = np.frombuffer(f.read(numModels * numSeqs), dtype=np.uint8).astype(bool).reshape((numModels, numSeqs))
         return tensor # ouput has shape (number of conformations, number of atoms)
 ```
+#### Removed conformations
+
+Use the **-u** **--outputRemoved** option to export the discarded conformations. This option generates a CSV file containing three columns: the removed conformation, the conformation that led to its removal, and the RMSD  between the two conformations
 
 ### CifAlignment launcher
 
@@ -252,19 +272,28 @@ Lenght of the alignment, in number of positions.
 
 ##### ref_len
 
-Lenght of the reference, in number of existing positions ('X' or '-' are excluded)
+Lenght of the reference, in number of existing positions ('X' or '-' are excluded).
 
 ##### coverage 
 
-Proportion of positions with at least 80% coverage (a position is considered covered if it does not contain 'X' or '-')
+Proportion of positions with at least 80% coverage (a position is considered covered if it does not contain 'X' or '-').
 
 ##### percent_id
 
-Percentage identity of the MSA
+Percentage identity of the MSA.
 
 ##### global_quality
 
-Measure of the quality of the alignment (1:Max)
+
+We evaluate the global quality of the MSA with a sum-of-pairs score, with $\sigma_{match} = 1$ and $\sigma_{mismatch} = \sigma_{gap}  =-0.5$. We normalised the raw sum-of-pair scores by dividing them by the maximum expected values. Hence, the final score is expressed as,
+
+$$\text{score}_{rel}(MSA) =  \frac{\text{score}(MSA)}{{n \choose 2} L_{eff}}$$
+
+where $score(MSA)$ is the raw MSA score, $n$ is the number of chains and $L_{eff}$ is the effective length of the MSA, computed as, 
+
+$$L_{eff} = \max_{s \in \mathcal{S}} \sum_{i =1}^{L(s)} \mathbb{I}\{s_i \in \mathcal{A}\}$$
+
+where $\mathcal{S}$ is the set of sequences comprised in the MSA, ${L(s)}$ is the length of the aligned sequence $s$, and $\mathcal{A}$ is the 20-letter amino acid alphabet (\textit{e.g.}, excluding gap characters). 
 
 ##### rmsd_max
 
@@ -296,5 +325,5 @@ Stats with the **ref** prefix are calculated in the same way as above, but align
 
 ##### norm suffix
 
-Stats with the suffix **norm** are calculated using the 3D position correlation matrix rather than the covariance matrix. 
+Stats with the **norm** suffix are calculated using the 3D position correlation matrix rather than the covariance matrix. 
 

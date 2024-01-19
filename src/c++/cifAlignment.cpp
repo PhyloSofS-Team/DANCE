@@ -144,7 +144,7 @@ int main(int argc, char** argv) {
                 std::cout << "--commonResAln, -z <int>      Set the minimum number of common residues in the alignment (default: 5)\n";
                 std::cout << "--numReferences, -n <int>     Set the number of references (default: 1)\n";
                 std::cout << "--referenceName, -e <name>    Force the choice of the reference with the given name\n";
-                std::cout << "--outputPDB, -p               Enable output pdb file\n";
+                std::cout << "--outputPdb, -p               Enable output pdb file\n";
                 std::cout << "--outputCif, -f               Enable output cif file\n";
                 std::cout << "--outputRawCoords, -b         Enable output raw coords binary file \n";
                 std::cout << "--outputAln, -a               Enable output aln file\n";
