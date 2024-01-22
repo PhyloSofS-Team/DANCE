@@ -670,7 +670,7 @@ for (int i = 0; i < len_seq; ++i) {
         if (output_cif){
             //make a copy of tst but with the models named using numbers instead of names
             //this is done to remove vizualisation problems in pymol
-            //use the aln file to get the names
+            
             gemmi::Structure tst2;
             tst2.models.reserve(tst.models.size());
             for (size_t iSeq=0 ; iSeq< names.size(); ++iSeq) {
