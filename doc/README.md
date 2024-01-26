@@ -217,7 +217,7 @@ The alignment output may differ from the one provided as input due to the remova
 
 Use the **-r** **--outputRmsd** to output the RMSD matrix. 
 The RMSD matrix give the computed RMSD between each conformation of the model. If two conformations share less than **-z** **--commonResAln** occupied position in the sequence alignment, they will have NAN value in the RMSD matrix.
-Otherwise the RMSD between two conformations $\mathbf{a}$ and $\mathbf{b}$ is defined by $$\text{RMSD}=\sqrt{\frac{1}{N}\sum_{i=1}^{N}w_{i}\left\lVert\mathbf{a}_{i}-\mathbf{b}_{i}\right\rVert^2}$$ where $i$ iterates over the common positions in the sequence alignment of the two conformations. 
+Otherwise the RMSD between two conformations $\mathbf{a}$ and $\mathbf{b}$ is defined by $$\text{RMSD}=\sqrt{\frac{1}{N}\sum^{N}_{i=1}w_{i}\left\lVert\mathbf{a}_{i} - \mathbf{b}_{i}\right\rVert^2}$$ where $i$ iterates over the common positions in the sequence alignment of the two conformations. 
 If the option **-w** **--weighted** is activated, $w_i$ value is the coverage of the position of the sequence alignment and the constraint $N=\sum_{i}w_i$ is imposed. Otherwise $w_i=1$ and $N$ is equal to the number of common residues shared by the two conformations.  
 
 #### Raw coordinates and mask
