@@ -322,7 +322,7 @@ Percentage of variance explained by the first component.
 
 Collectivity $\kappa$ of the first component, computed as 
 $$\kappa = \frac{1}{N} \exp\left( -\sum_{i=1}^{N} q_i^2 \log q_i^2 \right)$$
-where $q_i$ is the displacement of the atom $i$ with the constraint $\sum_{i=1}^{N} q_i^2 = 1$.
+where $q_i$ is the displacement of the atom $i$ with the constraint $\sum^{N}_{i=1} q_i^2 = 1$.
 
 ##### ref prefix
 
