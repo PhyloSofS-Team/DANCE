@@ -290,7 +290,8 @@ Percentage identity of the MSA.
 
 We evaluate the global quality of the MSA with a sum-of-pairs score, with $\sigma_{match} = 1$ and $\sigma_{mismatch} = \sigma_{gap}  =-0.5$. We normalised the raw sum-of-pair scores by dividing them by the maximum expected values. Hence, the final score is expressed as,
 
-$$\text{score}_{\mathbf{rel}}(MSA) = \frac{\text{score}(MSA)}{{n \choose 2} L_{\mathbf{eff}}}$$
+$$\text{score}_{{\text{rel}}}(MSA) = \frac{\text{score}(MSA)}{{n \choose 2} L_{{\text{eff}}}}$$
+
 
 where $score(MSA)$ is the raw MSA score, $n$ is the number of chains and $L_{eff}$ is the effective length of the MSA, computed as, 
 
