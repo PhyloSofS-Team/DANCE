@@ -218,7 +218,7 @@ The alignment output may differ from the one provided as input due to the remova
 Use the **-r** **--outputRmsd** to output the RMSD matrix. 
 The RMSD matrix give the computed RMSD between each conformation of the model. If two conformations share less than **-z** **--commonResAln** occupied position in the sequence alignment, they will have NAN value in the RMSD matrix.
 Otherwise the RMSD between two conformations $\mathbf{a}$ and $\mathbf{b}$ is defined by 
-$$RMSD = \sqrt{\frac{1}{N} \sum_{i=1}^{N} w_i \lVert \mathbf{a_i} - \mathbf{b_i} \rVert^2}$$
+$$\text{RMSD} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} w_i \lVert \mathbf{a_i} - \mathbf{b_i} \rVert^2}$$
 where $i$ iterates over the common positions in the sequence alignment of the two conformations. 
 If the option **-w** **--weighted** is activated, $w_i$ value is the coverage of the position of the sequence alignment and the constraint $N=\sum_{i}w_i$ is imposed. Otherwise $w_i=1$ and $N$ is equal to the number of common residues shared by the two conformations.  
 
@@ -290,7 +290,7 @@ Percentage identity of the MSA.
 
 We evaluate the global quality of the MSA with a sum-of-pairs score, with $\sigma_{match} = 1$ and $\sigma_{mismatch} = \sigma_{gap}  =-0.5$. We normalised the raw sum-of-pair scores by dividing them by the maximum expected values. Hence, the final score is expressed as,
 
-$$\text{score}_{rel}(MSA) = \frac{\text{score}(MSA)}{{n \choose 2} L_{eff}}$$
+$$\text{score_{rel}}(MSA) = \frac{\text{score}(MSA)}{{n \choose 2} L_{eff}}$$
 
 where $score(MSA)$ is the raw MSA score, $n$ is the number of chains and $L_{eff}$ is the effective length of the MSA, computed as, 
 
