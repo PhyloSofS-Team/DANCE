@@ -40,21 +40,21 @@ git clone https://github.com/PhyloSofS-Team/DANCE
 2. **Navigate to the DANCE Directory:**
 ```
 cd DANCE
-```
-3. **Configure the Environment:**
-
-- Open the `.env` file in a text editor.
-- Modify the paths for `MAFFT_PATH` and `MMSEQS_PATH` to reflect the installation paths of Mafft and MMseqs2 on your system.
-
-4. **Install Python Dependencies:**
+```  
+3. **Install Python Dependencies:**
 ```
 pip install -r requirements.txt
-```
-5. **Compile the Binaries:**
+```  
+4. **Compile the Binaries:**
 ```
 cmake CMakeLists.txt
 make
 ```
+5. **Configure the Environment:**
+
+- Open the `.env` file in a text editor.
+- Modify the paths for `MAFFT_PATH` and `MMSEQS_PATH` to reflect the installation paths of Mafft and MMseqs2 on your system.
+
 6. **Run the Exemple:**
 
 You may want to run the pipeline on the small set of given cifs:
