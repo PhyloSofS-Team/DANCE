@@ -47,7 +47,9 @@ pip install -r requirements.txt
 ```  
 4. **Compile the Binaries:**
 ```
-cmake CMakeLists.txt
+mkdir build
+cd build
+cmake ../
 make
 ```
 5. **Configure the Environment:**
