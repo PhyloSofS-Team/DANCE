@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3script_directory = os.path.dirname(os.path.abspath(__file__))
+import os
+script_directory = os.path.dirname(os.path.abspath(__file__))
+os.environ['SCRIPT_DIR'] = script_directory
+
 from src.python import mp_align, mp_cifAlignment, mp_cifConverter, mmseqs, mp_write_stats
 
 def main():
@@ -6,11 +10,13 @@ def main():
     identity = 0.8  
     coverage = 0.8 
     bool_weight = False # Enable weighted structural alignment. Each position is weighted by it's coverage in the alignment.
-    cif_dir = 'test/cifs/' # Directory containing CIF files
-    mmseqs_dir = 'test/mmseqs_output/' # Directory to store the MMseqs2 output files
-    aligned_dir = 'test/aligned/' # Directory to store the aligned multifasta files of the ensembles before model building
-    models_dir = 'test/models/' # Directory to store the 3D models 
-    mf_name = 'test/output.fa' # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
+
+    # You can change the following paths to your own directories:
+    cif_dir = os.path.join(script_directory,'test/cifs/') # Directory containing CIF files
+    mmseqs_dir = os.path.join(script_directory,'test/mmseqs_output/') # Directory to store the MMseqs2 output files
+    aligned_dir = os.path.join(script_directory,'test/aligned/') # Directory to store the aligned multifasta files of the ensembles before model building
+    models_dir = os.path.join(script_directory,'test/models/') # Directory to store the 3D models 
+    mf_name = os.path.join(script_directory,'test/output.fa') # Name of the multifasta file containing all the sequences extracted from the CIF files of cif_dir
     num_workers = None # Number of worker processes (default: number of CPU cores)
     cif_alignment_options = {
         'c': False,  # Alignment and center of mass calculation is done only with the CA atoms
