@@ -1,6 +1,6 @@
 # DANCE: Dimensionality Analysis for protein Conformational Exploration
 
-DANCE is designed to process a set of input protein 3D structures provided in Crystallographic Information File (CIF) format, producing protein or protein family-specific conformational collections in CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these ensembles. Additionally, the tool compiles these ensembles and extracts principal components to define the 'linear motion manifold', a fundamental representation of conformational dynamics. It also quantifies the intrinsic dimensionality of these manifolds, offering insights into the structural variations and flexibility of proteins.
+DANCE is designed to process a set of input protein 3D structures provided in Crystallographic Information File (CIF) format, producing protein or protein family-specific conformational collections in CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these collections (or ensembles). Additionally, the tool compiles these ensembles and extracts principal components to define the 'linear motion manifold', a fundamental representation of conformational dynamics. It also quantifies the intrinsic dimensionality of these manifolds, offering insights into the structural variations and flexibility of proteins.
 
 ## Description of the Algorithm
 
