@@ -56,6 +56,7 @@ make
 
 - Open the `.env` file in a text editor.
 - Set the path variables `MAFFT_PATH` and `MMSEQS_PATH` to the installation paths of Mafft and MMseqs2 on your system.
+- Modify the path variable `DANCE_HOME` to the installation paths of DANCE on your system. 
 
 6. **Run the Exemple:**
 
