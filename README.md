@@ -55,7 +55,7 @@ make
 5. **Configure the Environment:**
 
 - Open the `.env` file in a text editor.
-- Modify the paths for `MAFFT_PATH` and `MMSEQS_PATH` to reflect the installation paths of Mafft and MMseqs2 on your system.
+- Set the path variables `MAFFT_PATH` and `MMSEQS_PATH` to the installation paths of Mafft and MMseqs2 on your system.
 
 6. **Run the Exemple:**
 
