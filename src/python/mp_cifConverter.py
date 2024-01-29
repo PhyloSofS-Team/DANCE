@@ -4,7 +4,8 @@ import multiprocessing
 from tqdm import tqdm
 import argparse
 
-env_path = '.env'
+env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
+
 
 with open(env_path) as f:
     for line in f:
@@ -12,7 +13,13 @@ with open(env_path) as f:
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
 
-cif_converter_path = os.getenv('CIF_CONVERTER_PATH', 'bin/cifConverter')
+cif_converter_path_env = os.getenv('CIF_CONVERTER_PATH', 'bin/cifConverter')
+
+if os.path.isabs(cif_converter_path_env):
+    cif_converter_path = cif_converter_path_env
+else:
+    cif_converter_path = os.path.join(os.environ['SCRIPT_DIR'], cif_converter_path_env)
+
 
 def process_cif(file):
     try:

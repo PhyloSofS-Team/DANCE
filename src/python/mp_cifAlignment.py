@@ -9,15 +9,20 @@ import os
 import logging
 import datetime
 
-env_path = '.env'
-
+env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
 with open(env_path) as f:
     for line in f:
         if line.strip() and not line.startswith('#'):
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
 
-cif_alignment_path = os.getenv('CIF_ALIGNMENT_PATH', 'bin/cifAlignment')
+
+cif_alignment_path_env = os.getenv('CIF_ALIGNMENT_PATH', 'bin/cifAlignment')
+
+if os.path.isabs(cif_alignment_path_env):
+    cif_alignment_path = cif_alignment_path_env
+else:
+    cif_alignment_path = os.path.join(os.environ['SCRIPT_DIR'], cif_alignment_path_env)
 
 def launchCifAlignmentWrapper(args):
     return launchCifAlignment(*args)

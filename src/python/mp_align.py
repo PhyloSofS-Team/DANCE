@@ -4,16 +4,20 @@ import subprocess
 import multiprocessing
 import argparse
 import os
-
-env_path = '.env'
-
+env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
 with open(env_path) as f:
     for line in f:
         if line.strip() and not line.startswith('#'):
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
 
-mafft_path = os.getenv('MAFFT_PATH', 'mafft/bin/mafft')
+mafft_path_env = os.getenv('MAFFT_PATH', 'mafft/bin/mafft')
+
+if os.path.isabs(mafft_path_env):
+    mafft_path = mafft_path_env
+else:
+    mafft_path = os.path.join(os.environ['SCRIPT_DIR'], mafft_path_env)
+
 
 def launchMafft(zip):
     try:

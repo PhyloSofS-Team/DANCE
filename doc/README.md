@@ -296,7 +296,7 @@ where $score(MSA)$ is the raw MSA score, $n$ is the number of chains and $L_{eff
 
 $$L_{eff} = \max_{s \in \mathcal{S}} \sum_{i =1}^{L(s)} \mathbb{I}\{s_i \in \mathcal{A}\}$$
 
-where $\mathcal{S}$ is the set of sequences comprised in the MSA, ${L(s)}$ is the length of the aligned sequence $s$, and $\mathcal{A}$ is the 20-letter amino acid alphabet (\textit{e.g.}, excluding gap characters). 
+where $\mathcal{S}$ is the set of sequences comprised in the MSA, ${L(s)}$ is the length of the aligned sequence $s$, and $\mathcal{A}$ is the 20-letter amino acid alphabet (e.g. excluding gap characters). 
 
 ##### rmsd_max
 

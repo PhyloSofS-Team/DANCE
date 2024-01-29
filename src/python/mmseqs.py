@@ -4,15 +4,19 @@ import os
 import sys
 from typing import List
 
-env_path = '.env'
-
+env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
 with open(env_path) as f:
     for line in f:
         if line.strip() and not line.startswith('#'):
             key, value = line.strip().split('=', 1)
             os.environ[key] = value
 
-mmseqs_path = os.getenv('MMSEQS_PATH', 'mmseqs/bin/mmseqs')
+mmseqs_path_env = os.getenv('MMSEQS_PATH', 'mmseqs/bin/mmseqs')
+
+if os.path.isabs(mmseqs_path_env):
+    mmseqs_path = mmseqs_path_env
+else:
+    mmseqs_path = os.path.join(os.environ['SCRIPT_DIR'], mmseqs_path_env)
 
 def run_command(command: List[str]):
     try:
