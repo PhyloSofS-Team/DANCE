@@ -9,25 +9,28 @@ import os
 import logging
 import datetime
 
-env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
-with open(env_path) as f:
-    for line in f:
-        if line.strip() and not line.startswith('#'):
-            key, value = line.strip().split('=', 1)
-            os.environ[key] = value
 
+def setup_environment():
+    env_path = os.path.join(os.environ['SCRIPT_DIR'], '.env')
+    with open(env_path) as f:
+        for line in f:
+            if line.strip() and not line.startswith('#'):
+                key, value = line.strip().split('=', 1)
+                os.environ[key] = value
 
-cif_alignment_path_env = os.getenv('CIF_ALIGNMENT_PATH', 'bin/cifAlignment')
+    cif_alignment_path_env = os.getenv('CIF_ALIGNMENT_PATH', 'bin/cifAlignment')
 
-if os.path.isabs(cif_alignment_path_env):
-    cif_alignment_path = cif_alignment_path_env
-else:
-    cif_alignment_path = os.path.join(os.environ['SCRIPT_DIR'], cif_alignment_path_env)
+    if os.path.isabs(cif_alignment_path_env):
+        cif_alignment_path = cif_alignment_path_env
+    else:
+        cif_alignment_path = os.path.join(os.environ['SCRIPT_DIR'], cif_alignment_path_env)
+
+    return cif_alignment_path
 
 def launchCifAlignmentWrapper(args):
     return launchCifAlignment(*args)
 
-def launchCifAlignment(mf, options):
+def launchCifAlignment(mf, options, cif_alignment_path):
     mf_base = os.path.splitext(os.path.basename(mf))[0]
     log_filename = f"{mf_base}.log"
     output_dir = options.get('o', '.') 
@@ -62,17 +65,12 @@ def launchCifAlignment(mf, options):
 
 
 
-def process_cif_alignment(mf_files, options, num_workers=None):
+def run_cif_alignment(mfdir, options, listfile=None, num_workers=None, cif_alignment_path=None):
     if num_workers is None:
         num_workers = multiprocessing.cpu_count()  
-
-    print('Creating aligned multistructure files:')
-    with multiprocessing.Pool(processes=num_workers) as pool:
-        for _ in tqdm.tqdm(pool.imap_unordered(launchCifAlignmentWrapper, [(mf, options) for mf in mf_files]), total=len(mf_files)):
-            pass
-
-
-def run_cif_alignment(mfdir, options, listfile=None, num_workers=None):
+    
+    if cif_alignment_path is None:
+        cif_alignment_path = setup_environment()
     if listfile:
         with open(listfile, 'r') as f:
             mf_files = [line.strip() for line in f.readlines()]
@@ -81,13 +79,18 @@ def run_cif_alignment(mfdir, options, listfile=None, num_workers=None):
         unaligned_fa_files = set(glob.glob(os.path.join(mfdir, '*_unaligned.fa')))
         mf_files = list(all_fa_files - unaligned_fa_files)
 
-    process_cif_alignment(mf_files, options, num_workers)
+    print('Creating aligned multistructure files:')
+    with multiprocessing.Pool(processes=num_workers) as pool:
+        for _ in tqdm.tqdm(pool.imap_unordered(launchCifAlignmentWrapper, [(mf, options, cif_alignment_path) for mf in mf_files]), total=len(mf_files)):
+            pass
+
 
 def main():
     parser = argparse.ArgumentParser(description="Run cifAlignment with specified options.")
+    parser.add_argument("-m", "--cifAlignmentPath", required=True, help="Path to the cifAlignment binary.")
+    parser.add_argument("-d", "--cifDir", required=True, help="Path to the cif directory.")
+    parser.add_argument("-o", "--outputDir", required=True, help="Path to the output directory.")
     parser.add_argument("-i", "--alnDir", help="Path to the aln directory.")
-    parser.add_argument("-d", "--cifDir", help="Path to the cif directory.")
-    parser.add_argument("-o", "--outputDir", help="Path to the output directory.")
     parser.add_argument("-c", "--centermass", action="store_true", help="Centermass and alignment on Calpha only.")
     parser.add_argument("-w", "--weighted", action="store_true", help="Enable weighted alignment.")
     parser.add_argument("-s", "--similarity", type=float, help="Set RMSD similarity threshold for conformation removing.")
@@ -101,7 +104,7 @@ def main():
     parser.add_argument("-x", "--continentSize", type=int, help="Set the continent size (strictly superior to).")
     parser.add_argument("-y", "--isolationDistance", type=int, help="Set the isolation distance (superior or equal to).")
     parser.add_argument("-z", "--commonResAln", type=int, help="Set the minimum number of common residues for alignment.")
-    parser.add_argument("-w", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
+    parser.add_argument("-j", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
     parser.add_argument("-l", "--listfile", help="Path to the file containing a list of .fa files.")
     
     args = parser.parse_args()
@@ -121,13 +124,14 @@ def main():
         'y': args.isolationDistance,
         'z': args.commonResAln,
         'd': args.cifDir,  
-        'o': args.outputDir  
+        'o': args.outputDir
+  
     }
     
     if not args.alnDir and not args.listfile:
         raise ValueError("Either --alnDir or --listfile must be provided, use -h for help.")
     else:
-        run_cif_alignment(args.alnDir, options, args.listfile, args.workers)
+        run_cif_alignment(args.alnDir, options, args.listfile, args.workers, args.cifAlignmentPath)
 
 
 if __name__ == "__main__":

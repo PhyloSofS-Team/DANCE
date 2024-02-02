@@ -393,9 +393,9 @@ def main(use_weights, directory, num_workers=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compute statistics.")
-    parser.add_argument("--use_weights", action="store_true", help="Use this option to enable weights.")
-    parser.add_argument("--directory", type=str, default="./", help="Directory for input and output files.")
-    parser.add_argument("-w", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
+    parser.add_argument("-w","--use_weights", action="store_true", help="Use this option to enable weights.")
+    parser.add_argument("-d","--directory", type=str, default="./", help="Directory for input and output files.")
+    parser.add_argument("-j", "--workers", type=int, default=None, help="Number of worker processes (default: number of CPU cores)")
     args = parser.parse_args()
 
     main(args.use_weights, args.directory, args.workers)
