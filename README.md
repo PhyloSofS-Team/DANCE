@@ -2,8 +2,6 @@
 
 DANCE is designed to process a set of input protein 3D structures provided in Crystallographic Information File (CIF) format and output protein or protein family-specific conformational collections in CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these collections (or ensembles). Additionally, DANCE extracts the principal components from each conformational collection, using classical Principal Component Analysis. The principal components represent directions in the 3D space for every atom and can be interpreted as 'linear motions'. The eigenvalue associated to each component reflects its contribution to the total positional variance of the collection.
 
-[![Watch the video](https://github.com/PhyloSofS-Team/DANCE/assets/22662406/f2eed429-c0dd-44dd-8705-84729e11d6cc)
-
 ## Description of the Algorithm
 
 DANCE's algorithm unfolds in the following steps:
