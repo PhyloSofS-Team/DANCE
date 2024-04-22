@@ -10,13 +10,6 @@
 #include "gemmi/mmread.hpp"
 #include "gemmi/model.hpp"
 
-std::string extractFileName(const std::string& fullPath);
-void convert(const std::string& inputFileName, std::ostream& output);
-
-#include <fstream>
-#include <iostream>
-#include <string>
-
 void convert(const std::string& inputFileName, std::ostream& out, bool monomerOnly);
 
 int main(int argc, char** argv)
