@@ -17,6 +17,7 @@ def main():
 
     identity = 0.8
     coverage = 0.8
+    monomer_only = True  # Extract only the monomer sequences from the CIF files
     bool_weight = False  # Enable weighted structural alignment. Each position is weighted by it's coverage in the alignment.
 
     # You can change the following paths to your own directories:
@@ -55,7 +56,10 @@ def main():
 
     # Extract sequences from CIF files
     mp_cifConverter.process_files(
-        input_path=cif_dir, output_file=mf_name, num_workers=num_workers
+        input_path=cif_dir,
+        output_file=mf_name,
+        num_workers=num_workers,
+        monomer_only=monomer_only,
     )
 
     # Create ensembles of sequences with MMseqs2

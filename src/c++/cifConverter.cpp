@@ -13,29 +13,47 @@
 std::string extractFileName(const std::string& fullPath);
 void convert(const std::string& inputFileName, std::ostream& output);
 
+#include <fstream>
+#include <iostream>
+#include <string>
+
+void convert(const std::string& inputFileName, std::ostream& out, bool monomerOnly);
+
 int main(int argc, char** argv)
 {
-    if (argc < 2 || argc > 3) {
-        std::cerr << "Usage: " << argv[0] << " <input_file> [<output_file>]" << std::endl;
+    bool monomerOnly = false;
+    std::string inputFileName;
+    std::string outputFileName;
+
+    for (int i = 1; i < argc; ++i) {
+        std::string arg = argv[i];
+        if (arg == "--monomer-only") {
+            monomerOnly = true;
+        } else if (inputFileName.empty()) {
+            inputFileName = arg;
+        } else if (outputFileName.empty() && arg[0] != '-') {
+            outputFileName = arg;
+        }
+    }
+
+    if (inputFileName.empty()) {
+        std::cerr << "Usage: " << argv[0] << " <input_file> [<output_file>] [--monomer-only]" << std::endl;
         return 1;
     }
 
-    std::string inputFileName = argv[1];
-
-    if (argc == 3) {
-        std::ofstream outfile(argv[2], std::ios_base::app);
+    if (outputFileName.empty()) {
+        convert(inputFileName, std::cout, monomerOnly);
+    } else {
+        std::ofstream outfile(outputFileName, std::ios_base::app);
         if (!outfile.is_open()) {
-            std::cerr << "Error: cannot open for output: " << argv[2] << std::endl;
+            std::cerr << "Error: cannot open for output: " << outputFileName << std::endl;
             return 1;
         }
-        convert(inputFileName, outfile);
-    } else {
-        convert(inputFileName, std::cout);
+        convert(inputFileName, outfile, monomerOnly);
     }
 
     return 0;
 }
-
 std::string extractFileName(const std::string& fullPath)
 {
     size_t lastSlash = fullPath.find_last_of("/\\");
@@ -44,10 +62,23 @@ std::string extractFileName(const std::string& fullPath)
     return (dotPos == std::string::npos) ? filenameWithExt : filenameWithExt.substr(0, dotPos);
 }
 
-void convert(const std::string& inputFileName, std::ostream& output)
+void convert(const std::string& inputFileName, std::ostream& output, bool monomerOnly)
 {
     std::unordered_set<char> AA_set { 'A', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y' };
     gemmi::Structure st = gemmi::read_structure_file(inputFileName);
+
+    if (monomerOnly) {
+        if (st.assemblies.empty()) {
+            std::exit(0);
+        }
+
+        for (const auto& assembly : st.assemblies) {
+            if (assembly.oligomeric_count != 1) {
+                std::exit(0);
+            }
+        }
+    }
+
     std::string filename = extractFileName(inputFileName);
 
     if (st.name == "XXXX" && filename.size() >= 4) {
