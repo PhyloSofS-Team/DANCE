@@ -25,6 +25,10 @@ CifConverter is a simple tool written in C++ that extracts the amino acid sequen
 
 - The code implements a filtering step where sequences comprising fewer than 5 non-'X' residues are excluded from further analysis.
 
+#### Restriction to monomer sequences:
+
+- By using the **--monomer-only** option, you can retain only the monomer sequences. This option utilizes the **_pdbx_struct_assembly.oligomeric_count** field in the CIF file. If the option is used and this field is absent from the file, no sequences will be extracted.
+
 ### Standalone usage example:
 #### In the terminal
 ```
