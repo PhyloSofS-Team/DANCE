@@ -155,6 +155,9 @@ int main(int argc, char** argv)
             break;
         case 'd':
             cifDir = optarg;
+            if (!cifDir.empty() && cifDir.back() != '/') {
+                cifDir += '/';
+            }
             break;
         case 'c':
             Calpha = true;
