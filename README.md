@@ -73,3 +73,18 @@ Creating aligned multistructure files:
 Computing statistics:
 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████| 78/78 [00:01<00:00, 57.74it/s]
 ```
+
+## Citation
+
+If you use this code or the associated data in your research, please cite the following paper:
+
+@article{lombard2024explaining,
+  title={Explaining Conformational Diversity in Protein Families through Molecular Motions},
+  author={Lombard, Valentin and Grudinin, Sergei and Laine, Elodie},
+  journal={Scientific Data},
+  volume={11},
+  number={1},
+  pages={752},
+  year={2024},
+  publisher={Nature Publishing Group UK London}
+}
