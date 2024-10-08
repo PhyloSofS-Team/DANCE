@@ -92,7 +92,7 @@ If you use this code or the associated data in your research, please cite the fo
 ```
 ```bibtex
 @misc{Laine2024,
-  author       = {Laine, Elodie and Lombard, Valentin and Grudinin, Sergei},
+  author       = {Lombard, Valentin and Grudinin, Sergei and Laine, Elodie},
   title        = {Explaining Conformational Diversity in Protein Families through Molecular Motions},
   year         = {2024},
   url          = {https://doi.org/10.6084/m9.figshare.c.7050008.v1},
