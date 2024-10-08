@@ -78,6 +78,7 @@ Computing statistics:
 
 If you use this code or the associated data in your research, please cite the following paper:
 
+```bibtex
 @article{lombard2024explaining,
   title={Explaining Conformational Diversity in Protein Families through Molecular Motions},
   author={Lombard, Valentin and Grudinin, Sergei and Laine, Elodie},
@@ -88,3 +89,4 @@ If you use this code or the associated data in your research, please cite the fo
   year={2024},
   publisher={Nature Publishing Group UK London}
 }
+```
