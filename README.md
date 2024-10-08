@@ -91,7 +91,7 @@ If you use this code or the associated data in your research, please cite the fo
 }
 ```
 ```bibtex
-@misc{Laine2024,
+@misc{lombard2024explainingdataset,
   author       = {Lombard, Valentin and Grudinin, Sergei and Laine, Elodie},
   title        = {Explaining Conformational Diversity in Protein Families through Molecular Motions},
   year         = {2024},
