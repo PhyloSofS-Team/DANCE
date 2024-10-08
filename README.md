@@ -76,7 +76,7 @@ Computing statistics:
 
 ## Citation
 
-If you use this code or the associated data in your research, please cite the following paper:
+If you use this code or the associated data in your research, please cite the following papers:
 
 ```bibtex
 @article{lombard2024explaining,
