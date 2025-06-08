@@ -1,4 +1,4 @@
-# DANCE: Dimensionality Analysis for protein Conformational Exploration
+# DANCE: Dimensionality Analysis for protein Conformational Exploration [![DOI](https://zenodo.org/badge/732418733.svg)](https://doi.org/10.5281/zenodo.15617757)
 
 DANCE is designed to process a set of input protein 3D structures provided in Crystallographic Information File (CIF) format and output protein or protein family-specific conformational collections in CIF or PDB format. By leveraging amino acid sequence similarities, it effectively groups and aligns the inputted 3D structures to create these collections (or ensembles). Additionally, DANCE extracts the principal components from each conformational collection, using classical Principal Component Analysis. The principal components represent directions in the 3D space for every atom and can be interpreted as 'linear motions'. The eigenvalue associated to each component reflects its contribution to the total positional variance of the collection.
 
